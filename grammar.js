@@ -473,8 +473,6 @@ module.exports = grammar({
 
     ident: _ => token(/[_a-zA-Z0-9][a-zA-Z0-9_]*/),
 
-    // _immediate_ident: _ => token.immediate(/[a-zA-Z0-9][a-zA-Z0-9_]*/),
-
     _immediate_dot: _ => prec.left(token.immediate('.')),
   }
 });
