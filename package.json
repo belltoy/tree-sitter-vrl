@@ -47,7 +47,16 @@
   "tree-sitter": [
     {
       "scope": "source.vrl",
-      "injection-regex": "^vrl$"
+      "file-types": [
+        "vrl"
+      ],
+      "highlights": [
+        "queries/highlights.scm"
+      ],
+      "tags": [
+        "queries/tags.scm"
+      ],
+      "injection-regex": "^(source)$"
     }
   ]
 }

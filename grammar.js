@@ -24,7 +24,6 @@ module.exports = grammar({
   precedences: $ => [
     [
       'return',
-      // 'unary',
       'not',
       'binary_factor',
       'binary_add',
@@ -43,32 +42,24 @@ module.exports = grammar({
   word: $ => $.ident,
 
   rules: {
-    program: $ => repeat(seq($.expr, $._end_of_expression)),
+    program: $ => optional($._root_exprs),
 
-    _root_exprs: $ => seq(
-      field('exprs_1', $.expr),
-      optional(
-        seq(
-          repeat(seq($.expr, $._end_of_expression)),  // Tree-sitter does not support syntactic
-                                                      // rules that match the empty string unless
-                                                      // they are used only as the grammar's start
-                                                      // rule.
-          seq(
-            repeat1(prec.left(seq($.expr, $._end_of_expression))),
-            $.expr
-          ),
-        )
-      ),
+    _root_exprs: $ => choice(
+      $._root_expr,
+      repeat1(seq($._root_expr, $._end_of_expression)),
+      seq(repeat1(seq($._root_expr, $._end_of_expression)), $._root_expr),
     ),
 
-    expr: $ => choice(
+    _root_expr: $ => $._expr,
+
+    _expr: $ => choice(
       $.if_statement,
       $.abort,
       $.return,
-      $.assignment_expr,
+      $._assignment_expr,
     ),
 
-    arithmetic: $ => choice(
+    _arithmetic: $ => choice(
       ...[
         ['??', 'error_coalesce'],
         ['||', 'logical_or'],
@@ -95,26 +86,24 @@ module.exports = grammar({
           return $._term
         } else
         if (operator === '!') {
-          return prec.left(precedence, seq(
+          return prec.right(precedence, seq(
             operator,
-            field('right', $.arithmetic),
+            field('right', $._arithmetic),
           ))
         } else {
-          return prec.left(
-            precedence, seq(
-              field('left', $.arithmetic),
+          return prec.left(precedence, seq(
+              field('left', $._arithmetic),
               field('operator', operator),
-              field('right', $.arithmetic),
-            )
-          )
+              field('right', $._arithmetic),
+          ))
         }
       })),
 
     _term: $ => choice(
       $._literal,
-      // $.container,
+      prec.left(1, $.container), // higher than ??
       $.query,
-      // $.function_call,
+      prec.left(1, $.function_call), // higher than ??
       $.ident,
     ),
 
@@ -129,48 +118,48 @@ module.exports = grammar({
       $.timestamp,
     ),
 
-    // _container: $ => choice(
-    //   $.group,
-    //   $.block,
-    //   $.array,
-    //   $.object,
-    // ),
+    container: $ => choice(
+      $.group,
+      $.block,
+      $.array,
+      $.object,
+    ),
 
-    if_statement: $ => seq(
+    if_statement: $ => prec.left(seq(
       'if',
       field('condition', $.predicate),
-      repeat($._not_terminal_newline),
+      repeat($._non_terminal_newline),
       $.block,
 
       repeat(seq(
         'else',
-        repeat($._not_terminal_newline),
+        repeat($._non_terminal_newline),
         'if',
         field('condition', $.predicate),
-        repeat($._not_terminal_newline),
+        repeat($._non_terminal_newline),
         $.block,
       )),
 
-      optional(seq('else', repeat($._not_terminal_newline), $.block)),
-    ),
+      optional(seq('else', repeat($._non_terminal_newline), $.block)),
+    )),
 
     predicate: $ => choice(
-      $.arithmetic,
+      $._arithmetic,
       seq(
       '(',
-        repeat($._not_terminal_newline),
+        repeat($._non_terminal_newline),
         repeat1(seq(
           $.assignment,
-          repeat1(choice($._not_terminal_newline, ';')),
+          repeat1(choice($._non_terminal_newline, ';')),
         )),
         optional($.assignment),
         ')',
       ),
     ),
 
-    assignment_expr: $ => choice(
-      field("bar1", $.assignment),
-      field("bar2", $.arithmetic),
+    _assignment_expr: $ => choice(
+      $.assignment,
+      $._arithmetic,
     ),
 
     assignment: $ => choice(
@@ -192,8 +181,8 @@ module.exports = grammar({
     assign_single: $ => seq(
       $.assign_target,
       $.assign_operator,
-      repeat($._not_terminal_newline),
-      $.expr,
+      repeat($._non_terminal_newline),
+      $._expr,
     ),
 
     _assign_infallible: $ => seq(
@@ -201,8 +190,8 @@ module.exports = grammar({
       ',',
       $.assign_target, // err target
       $.assign_operator,
-      repeat($._not_terminal_newline),
-      $.expr,
+      repeat($._non_terminal_newline),
+      $._expr,
     ),
 
     /// The {L,R}Query token is an "instruction" token. It does not represent
@@ -239,8 +228,8 @@ module.exports = grammar({
       $.internal,
       $.external_event,
       $.external_metadata,
-      // field('function_call', $.function_call),
-      // $.container, // array or object
+      field('function_call', $.function_call),
+      $.container, // array or object
       $.event,
       $.metadata,
       // $.query_target,
@@ -248,33 +237,42 @@ module.exports = grammar({
     ),
 
     internal: $ => seq(
-      $._immediate_ident,
-      $.path_begin_with_dot,
+      $.ident,
+      field('path', $.path_begin_with_dot),
     ),
 
     _immediate_dot: _ => prec.left(token.immediate('.')),
     _immediate_percent: _ => prec.left(token.immediate('%')),
 
     external_event: $ => prec.left(2, seq(
-      // $._immediate_dot,
       '.',
-      $.path_begin_without_dot,
+      field('path', $.path_begin_without_dot),
     )),
 
     external_metadata: $ => prec.left(2, seq(
       '%',
-      $.path_begin_without_dot,
+      field('path', $.path_begin_without_dot),
     )),
 
     event: $ => '.',
     metadata: $ => '%',
+
+    // query_target: $ => prec.right(-1, choice(
+    //   field('internal', seq($.ident, $.path)),
+    //   field('external', seq('.', $.path)),
+    //   field('external_metadata', seq('%', $.path)),
+    //   // field('function_call', $.function_call),
+    //   // $.container, // array or object
+    // )),
+
+    // path: $ => prec.left(repeat1($._path_segment)),
 
     path_begin_with_dot: $ => prec.left(seq(
       choice(
         field('field', seq($._immediate_dot, $.field)),
         field('index', seq('[', $.integer, ']')),
       ),
-      repeat($.path_segment),
+      repeat($._path_segment),
     )),
 
     path_begin_without_dot: $ => prec.left(seq(
@@ -282,10 +280,10 @@ module.exports = grammar({
         field('field', $.field),
         field('index', seq('[', $.integer, ']')),
       ),
-      repeat($.path_segment),
+      repeat($._path_segment),
     )),
 
-    path_segment: $ => choice(
+    _path_segment: $ => choice(
       field('field', seq($._immediate_dot, $.field)),
       field('index', seq('[', $.integer, ']')),
     ),
@@ -310,20 +308,43 @@ module.exports = grammar({
 
     block: $ => seq(
       '{',
-      repeat($._not_terminal_newline),
-      $._exprs,
+        seq(repeat($._non_terminal_newline), $._exprs),
       '}',
     ),
 
-    _exprs: $ => choice(
-      $.expr,
+    object: $ => choice(
+      seq('{', repeat($._non_terminal_newline), '}'),
       seq(
-          repeat1(seq($.expr, $._end_of_expression)),
-          optional($.expr),
+        '{',
+        repeat($._non_terminal_newline),
+        commaMultiline(seq($.object_key, ':', $._arithmetic), $),
+        '}',
       ),
     ),
 
-    _not_terminal_newline: $ => '\n',
+    object_key: $ => $.string,
+
+    array: $ => choice(
+      seq('[', repeat($._non_terminal_newline), ']'),
+      seq(
+        '[',
+        repeat($._non_terminal_newline),
+        commaMultiline($._arithmetic, $),
+        ']',
+      ),
+    ),
+
+    group: $ => seq('(', $._arithmetic, ')'),
+
+    _exprs: $ => choice(
+      $._expr,
+      seq(
+          repeat1(seq($._expr, $._end_of_expression)),
+          optional($._expr),
+      ),
+    ),
+
+    _non_terminal_newline: $ => '\n',
 
     _end_of_expression: $ =>
       choice(
@@ -331,16 +352,52 @@ module.exports = grammar({
         seq(';', repeat('\n')),
       ),
 
+    function_call: $ => seq(
+      $.ident,
+      optional(token.immediate('!')),
+      '(',
+      repeat($._non_terminal_newline),
+      field('arguments', optional(commaMultiline($.argument, $))),
+      ')',
+      optional($.closure),
+    ),
+
+    argument: $ => seq(
+      optional(seq($._any_ident, ':')),
+      $._arithmetic
+    ),
+
+    closure: $ => seq(
+      '->',
+      $.closure_variables,
+      repeat($._non_terminal_newline),
+      field('body', $.block),
+    ),
+
+    closure_variables: $ => choice(
+      '||',
+      seq(
+        '|',
+        optional(commaMultiline($.closure_variable, $)),
+        '|',
+      )
+    ),
+
+    closure_variable: $ => choice(
+      $.ident,
+      '_',
+    ),
+
     abort: $ => prec.left(2, seq(
       'abort',
-      optional(seq('abort', field('message', $.expr))),
+      optional(field('message', $._expr)),
     )),
 
     return: $ =>
       prec.left('return',
         seq(
           'return',
-          $.expr,
+          $._expr,
         ),
       ),
 
@@ -392,7 +449,21 @@ module.exports = grammar({
       )),
     ),
 
-    ident: _ => token(/[a-zA-Z0-9][a-zA-Z0-9_]*/),
+    ident: _ => token(/[_a-zA-Z0-9][a-zA-Z0-9_]*/),
     _immediate_ident: _ => token.immediate(/[a-zA-Z0-9][a-zA-Z0-9_]*/),
   }
 });
+
+function commaMultiline(rule, $) {
+  return choice(
+    seq(rule, repeat($._non_terminal_newline)),
+    seq(
+      repeat1(seq(
+        rule,
+        ',',
+        repeat($._non_terminal_newline)
+      )),
+      optional(seq(rule, repeat($._non_terminal_newline))),
+    )
+  )
+}
