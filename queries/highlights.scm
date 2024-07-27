@@ -78,6 +78,8 @@
  (regex_escape_sequence)
 ] @string.escape
 
+(sigil_name) @string.special
+
 (regex_content) @string.regexp
 
 (boolean) @boolean

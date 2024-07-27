@@ -833,11 +833,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "raw_string_content",
+          "named": true
+        },
+        {
+          "type": "sigil_name",
           "named": true
         }
       ]
@@ -868,11 +872,15 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "regex_content",
+          "named": true
+        },
+        {
+          "type": "sigil_name",
           "named": true
         }
       ]
@@ -1017,7 +1025,17 @@
   {
     "type": "timestamp",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "sigil_name",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "unary_expression",
@@ -1200,20 +1218,12 @@
     "named": false
   },
   {
-    "type": "r",
-    "named": false
-  },
-  {
     "type": "return",
     "named": false
   },
   {
-    "type": "s",
-    "named": false
-  },
-  {
-    "type": "t",
-    "named": false
+    "type": "sigil_name",
+    "named": true
   },
   {
     "type": "true",

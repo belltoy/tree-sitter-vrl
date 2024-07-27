@@ -2226,8 +2226,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "s"
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "s"
+          },
+          "named": true,
+          "value": "sigil_name"
         },
         {
           "type": "SYMBOL",
@@ -2304,8 +2309,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "r"
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "r"
+          },
+          "named": true,
+          "value": "sigil_name"
         },
         {
           "type": "SYMBOL",
@@ -2390,8 +2400,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "t"
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "t"
+          },
+          "named": true,
+          "value": "sigil_name"
         },
         {
           "type": "STRING",

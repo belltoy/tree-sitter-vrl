@@ -206,14 +206,14 @@ static const char * const ts_symbol_names[] = {
   [aux_sym__string_content_token1] = "_string_content_token1",
   [aux_sym__string_content_token2] = "_string_content_token2",
   [sym_escape_sequence] = "escape_sequence",
-  [anon_sym_s] = "s",
+  [anon_sym_s] = "sigil_name",
   [anon_sym_SQUOTE] = "'",
   [aux_sym__raw_string_content_token1] = "_raw_string_content_token1",
   [aux_sym__raw_string_content_token2] = "_raw_string_content_token2",
   [aux_sym_raw_string_escape_sequence_token1] = "raw_string_escape_sequence_token1",
-  [anon_sym_r] = "r",
+  [anon_sym_r] = "sigil_name",
   [sym_boolean] = "boolean",
-  [anon_sym_t] = "t",
+  [anon_sym_t] = "sigil_name",
   [aux_sym__timestamp_content_token1] = "_timestamp_content_token1",
   [aux_sym__timestamp_content_token2] = "_timestamp_content_token2",
   [anon_sym_DOT2] = ".",
@@ -351,9 +351,9 @@ static const TSSymbol ts_symbol_map[] = {
   [aux_sym__raw_string_content_token1] = aux_sym__raw_string_content_token1,
   [aux_sym__raw_string_content_token2] = aux_sym__raw_string_content_token2,
   [aux_sym_raw_string_escape_sequence_token1] = aux_sym_raw_string_escape_sequence_token1,
-  [anon_sym_r] = anon_sym_r,
+  [anon_sym_r] = anon_sym_s,
   [sym_boolean] = sym_boolean,
-  [anon_sym_t] = anon_sym_t,
+  [anon_sym_t] = anon_sym_s,
   [aux_sym__timestamp_content_token1] = aux_sym__timestamp_content_token1,
   [aux_sym__timestamp_content_token2] = aux_sym__timestamp_content_token2,
   [anon_sym_DOT2] = anon_sym_DOT,
@@ -641,7 +641,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   },
   [anon_sym_s] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
   [anon_sym_SQUOTE] = {
     .visible = true,
@@ -661,7 +661,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   },
   [anon_sym_r] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
   [sym_boolean] = {
     .visible = true,
@@ -669,7 +669,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   },
   [anon_sym_t] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
   [aux_sym__timestamp_content_token1] = {
     .visible = false,

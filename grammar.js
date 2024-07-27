@@ -426,7 +426,7 @@ module.exports = grammar({
     )),
 
     raw_string: $ => seq(
-      's',
+      alias('s', $.sigil_name),
       $.raw_string_content,
     ),
 
@@ -448,7 +448,7 @@ module.exports = grammar({
     raw_string_escape_sequence: $ => token.immediate(seq('\\', '\'')),
 
     regex: $ => seq(
-      'r',
+      alias('r', $.sigil_name),
       $.regex_content,
     ),
 
@@ -471,7 +471,7 @@ module.exports = grammar({
     null: $ => 'null',
 
     timestamp: $ => seq(
-      't',
+      alias('t', $.sigil_name),
       '\'',
       repeat($._timestamp_content),
       '\'',
