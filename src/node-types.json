@@ -426,43 +426,6 @@
     }
   },
   {
-    "type": "event",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "external_event",
-    "named": true,
-    "fields": {
-      "path": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "path_begin_without_dot",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "external_metadata",
-    "named": true,
-    "fields": {
-      "path": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "path_begin_without_dot",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "field",
     "named": true,
     "fields": {},
@@ -573,11 +536,6 @@
     }
   },
   {
-    "type": "metadata",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "null",
     "named": true,
     "fields": {}
@@ -625,45 +583,7 @@
     }
   },
   {
-    "type": "path_begin_with_dot",
-    "named": true,
-    "fields": {
-      "field": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": ".",
-            "named": false
-          },
-          {
-            "type": "field",
-            "named": true
-          }
-        ]
-      },
-      "index": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "[",
-            "named": false
-          },
-          {
-            "type": "]",
-            "named": false
-          },
-          {
-            "type": "integer",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "path_begin_without_dot",
+    "type": "path",
     "named": true,
     "fields": {
       "field": {
@@ -769,20 +689,9 @@
   {
     "type": "query",
     "named": true,
-    "fields": {
-      "path": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "path_begin_with_dot",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -795,14 +704,6 @@
         },
         {
           "type": "event",
-          "named": true
-        },
-        {
-          "type": "external_event",
-          "named": true
-        },
-        {
-          "type": "external_metadata",
           "named": true
         },
         {
@@ -823,6 +724,10 @@
         },
         {
           "type": "object",
+          "named": true
+        },
+        {
+          "type": "path",
           "named": true
         }
       ]
@@ -1194,6 +1099,10 @@
     "named": true
   },
   {
+    "type": "event",
+    "named": true
+  },
+  {
     "type": "false",
     "named": false
   },
@@ -1211,6 +1120,10 @@
   },
   {
     "type": "integer",
+    "named": true
+  },
+  {
+    "type": "metadata",
     "named": true
   },
   {

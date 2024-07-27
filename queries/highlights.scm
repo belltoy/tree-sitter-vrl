@@ -78,6 +78,12 @@
  (regex_escape_sequence)
 ] @string.escape
 
+(string_template (ident) @variable)
+(string_template
+  "{{" @punctuation.special
+  (_)
+  "}}" @punctuation.special)
+
 (sigil_name) @string.special
 
 (regex_content) @string.regexp
@@ -85,3 +91,5 @@
 (boolean) @boolean
 
 (ident) @identifier
+
+(event) @variable.builtin

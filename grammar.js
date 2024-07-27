@@ -226,35 +226,31 @@ module.exports = grammar({
     /// whitespace-agnostic, while still being able to distinguish between the
     /// above two groups of examples.
     query: $ => choice(
-      // $.internal,
-      $.external_event,
-      $.external_metadata,
-      $.event,      // .
-      $.metadata,   // %
+      $._external_event,
+      $._external_metadata,
+      alias('.', $.event),
+      alias('%', $.metadata),
       seq(
         choice(
           $.ident,
           $.function_call,
           $._container, // array or object
         ),
-        field('path', $.path_begin_with_dot),
+        alias($._path_begin_with_dot, $.path),
       ),
     ),
 
-    external_event: $ => prec.left(2, seq(
-      '.',
-      field('path', $.path_begin_without_dot),
+    _external_event: $ => prec.left(2, seq(
+      alias('.', $.event),
+      alias($._path_begin_without_dot, $.path),
     )),
 
-    external_metadata: $ => prec.left(2, seq(
+    _external_metadata: $ => prec.left(2, seq(
       '%',
-      field('path', $.path_begin_without_dot),
+      alias($._path_begin_without_dot, $.path),
     )),
 
-    event: $ => '.',
-    metadata: $ => '%',
-
-    path_begin_with_dot: $ => prec.left(seq(
+    _path_begin_with_dot: $ => prec.left(seq(
       choice(
         field('field', seq($._immediate_dot, $.field)),
         field('index', seq('[', $.integer, ']')),
@@ -262,7 +258,7 @@ module.exports = grammar({
       repeat($._path_segment),
     )),
 
-    path_begin_without_dot: $ => prec.left(seq(
+    _path_begin_without_dot: $ => prec.left(seq(
       choice(
         field('field', $.field),
         field('index', seq('[', $.integer, ']')),
