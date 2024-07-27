@@ -2,6 +2,49 @@
 (comment) @comment
 
 [
+ (null)
+ (boolean)
+] @constant.builtin
+
+[
+ (timestamp)
+] @constant
+
+(closure_variables
+  "|" @punctuation.bracket)
+
+(integer) @number
+
+(float) @number
+
+[
+ (string)
+ (raw_string)
+] @string
+
+[
+ (raw_string_escape_sequence)
+ (escape_sequence)
+ (regex_escape_sequence)
+] @string.escape
+
+(string_template (ident) @variable)
+(string_template
+  "{{" @punctuation.special
+  (_)
+  "}}" @punctuation.special)
+
+(regex) @regexp
+
+(boolean) @boolean
+
+(ident) @variable
+
+(event) @variable.builtin
+
+(function_call (ident) @function.call)
+
+[
    "abort"
    ; "as"
    ; "break"
@@ -57,39 +100,7 @@
   "}"
 ]  @punctuation.bracket
 
-[
- (null)
- (boolean)
- (timestamp)
-] @constant.builtin
-
-(closure_variables
-  "|" @punctuation.bracket)
-
-(integer) @number
-
-(float) @number
-
-(string) @string
-
-[
- (raw_string_escape_sequence)
- (escape_sequence)
- (regex_escape_sequence)
-] @string.escape
-
-(string_template (ident) @variable)
-(string_template
-  "{{" @punctuation.special
-  (_)
-  "}}" @punctuation.special)
-
-(sigil_name) @string.special
-
-(regex_content) @string.regexp
-
-(boolean) @boolean
-
-(ident) @identifier
-
-(event) @variable.builtin
+(function_call
+  (ident) @keyword.exception
+  "!"
+  (#any-of? @keyword.exception "assert" "assert_eq"))
