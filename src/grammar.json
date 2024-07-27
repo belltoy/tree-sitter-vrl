@@ -2352,7 +2352,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "regex_escape_content"
+          "name": "regex_escape_sequence"
         },
         {
           "type": "IMMEDIATE_TOKEN",
@@ -2372,7 +2372,7 @@
         }
       ]
     },
-    "regex_escape_content": {
+    "regex_escape_sequence": {
       "type": "IMMEDIATE_TOKEN",
       "content": {
         "type": "SEQ",

@@ -460,11 +460,11 @@ module.exports = grammar({
 
     _regex_content: $ => choice(
       /[^\\']+/,
-      $.regex_escape_content,
+      $.regex_escape_sequence,
       token.immediate(seq('\\', /[^']/)),
     ),
 
-    regex_escape_content: $ => token.immediate(seq('\\', '\'')),
+    regex_escape_sequence: $ => token.immediate(seq('\\', '\'')),
 
     boolean: $ => /true|false/,
 

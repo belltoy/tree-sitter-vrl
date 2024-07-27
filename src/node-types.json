@@ -895,14 +895,14 @@
       "required": false,
       "types": [
         {
-          "type": "regex_escape_content",
+          "type": "regex_escape_sequence",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "regex_escape_content",
+    "type": "regex_escape_sequence",
     "named": true,
     "fields": {}
   },
