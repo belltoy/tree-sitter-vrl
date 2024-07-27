@@ -2246,26 +2246,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": "s"
-          },
-          "named": true,
-          "value": "sigil_name"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "raw_string_content"
-        }
-      ]
-    },
-    "raw_string_content": {
-      "type": "SEQ",
-      "members": [
-        {
           "type": "STRING",
-          "value": "'"
+          "value": "s'"
         },
         {
           "type": "REPEAT",
@@ -2329,26 +2311,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": "r"
-          },
-          "named": true,
-          "value": "sigil_name"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "regex_content"
-        }
-      ]
-    },
-    "regex_content": {
-      "type": "SEQ",
-      "members": [
-        {
           "type": "STRING",
-          "value": "'"
+          "value": "r'"
         },
         {
           "type": "REPEAT",
@@ -2420,17 +2384,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": "t"
-          },
-          "named": true,
-          "value": "sigil_name"
-        },
-        {
           "type": "STRING",
-          "value": "'"
+          "value": "t'"
         },
         {
           "type": "REPEAT",
