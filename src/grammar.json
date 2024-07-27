@@ -1013,27 +1013,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "internal"
-        },
-        {
-          "type": "SYMBOL",
           "name": "external_event"
         },
         {
           "type": "SYMBOL",
           "name": "external_metadata"
-        },
-        {
-          "type": "FIELD",
-          "name": "function_call",
-          "content": {
-            "type": "SYMBOL",
-            "name": "function_call"
-          }
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_container"
         },
         {
           "type": "SYMBOL",
@@ -1042,23 +1026,36 @@
         {
           "type": "SYMBOL",
           "name": "metadata"
-        }
-      ]
-    },
-    "internal": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "ident"
         },
         {
-          "type": "FIELD",
-          "name": "path",
-          "content": {
-            "type": "SYMBOL",
-            "name": "path_begin_with_dot"
-          }
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "ident"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "function_call"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_container"
+                }
+              ]
+            },
+            {
+              "type": "FIELD",
+              "name": "path",
+              "content": {
+                "type": "SYMBOL",
+                "name": "path_begin_with_dot"
+              }
+            }
+          ]
         }
       ]
     },
@@ -1273,9 +1270,20 @@
         },
         {
           "type": "SYMBOL",
+          "name": "_path_field"
+        },
+        {
+          "type": "SYMBOL",
           "name": "string"
         }
       ]
+    },
+    "_path_field": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[@_a-zA-Z][@_a-zA-Z0-9]*"
+      }
     },
     "_any_ident": {
       "type": "CHOICE",
@@ -2233,13 +2241,6 @@
       "content": {
         "type": "PATTERN",
         "value": "[_a-zA-Z0-9][a-zA-Z0-9_]*"
-      }
-    },
-    "_immediate_ident": {
-      "type": "IMMEDIATE_TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "[a-zA-Z0-9][a-zA-Z0-9_]*"
       }
     },
     "_immediate_dot": {

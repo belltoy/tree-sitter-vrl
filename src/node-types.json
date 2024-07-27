@@ -565,32 +565,6 @@
     }
   },
   {
-    "type": "internal",
-    "named": true,
-    "fields": {
-      "path": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "path_begin_with_dot",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "ident",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "metadata",
     "named": true,
     "fields": {}
@@ -788,12 +762,12 @@
     "type": "query",
     "named": true,
     "fields": {
-      "function_call": {
+      "path": {
         "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "function_call",
+            "type": "path_begin_with_dot",
             "named": true
           }
         ]
@@ -801,7 +775,7 @@
     },
     "children": {
       "multiple": false,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "array",
@@ -824,11 +798,15 @@
           "named": true
         },
         {
+          "type": "function_call",
+          "named": true
+        },
+        {
           "type": "group",
           "named": true
         },
         {
-          "type": "internal",
+          "type": "ident",
           "named": true
         },
         {

@@ -226,20 +226,19 @@ module.exports = grammar({
     /// whitespace-agnostic, while still being able to distinguish between the
     /// above two groups of examples.
     query: $ => choice(
-      $.internal,
+      // $.internal,
       $.external_event,
       $.external_metadata,
-      field('function_call', $.function_call),
-      $._container, // array or object
-      $.event,
-      $.metadata,
-      // $.query_target,
-      // prec.left(2, seq($.query_target, $.path)),
-    ),
-
-    internal: $ => seq(
-      $.ident,
-      field('path', $.path_begin_with_dot),
+      $.event,      // .
+      $.metadata,   // %
+      seq(
+        choice(
+          $.ident,
+          $.function_call,
+          $._container, // array or object
+        ),
+        field('path', $.path_begin_with_dot),
+      ),
     ),
 
     external_event: $ => prec.left(2, seq(
@@ -254,16 +253,6 @@ module.exports = grammar({
 
     event: $ => '.',
     metadata: $ => '%',
-
-    // query_target: $ => prec.right(-1, choice(
-    //   field('internal', seq($.ident, $.path)),
-    //   field('external', seq('.', $.path)),
-    //   field('external_metadata', seq('%', $.path)),
-    //   // field('function_call', $.function_call),
-    //   // $._container, // array or object
-    // )),
-
-    // path: $ => prec.left(repeat1($._path_segment)),
 
     path_begin_with_dot: $ => prec.left(seq(
       choice(
@@ -288,9 +277,11 @@ module.exports = grammar({
 
     field: $ => choice(
       $._any_ident,
-      // $._path_field,  // TODO: Implement
+      $._path_field,
       $.string,
     ),
+
+    _path_field: _ => token.immediate(/[@_a-zA-Z][@_a-zA-Z0-9]*/),
 
     _any_ident: $ => choice(
       $.ident,
@@ -449,7 +440,7 @@ module.exports = grammar({
 
     ident: _ => token(/[_a-zA-Z0-9][a-zA-Z0-9_]*/),
 
-    _immediate_ident: _ => token.immediate(/[a-zA-Z0-9][a-zA-Z0-9_]*/),
+    // _immediate_ident: _ => token.immediate(/[a-zA-Z0-9][a-zA-Z0-9_]*/),
 
     _immediate_dot: _ => prec.left(token.immediate('.')),
   }
