@@ -812,7 +812,7 @@
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "assignment"
+                    "name": "_assignment"
                   },
                   {
                     "type": "REPEAT1",
@@ -838,7 +838,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "assignment"
+                  "name": "_assignment"
                 },
                 {
                   "type": "BLANK"
@@ -858,7 +858,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "assignment"
+          "name": "_assignment"
         },
         {
           "type": "SYMBOL",
@@ -866,16 +866,26 @@
         }
       ]
     },
-    "assignment": {
+    "_assignment": {
       "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_assign_single"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_assign_single"
+          },
+          "named": true,
+          "value": "assignment"
         },
         {
-          "type": "SYMBOL",
-          "name": "_assign_infallible"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_assign_infallible"
+          },
+          "named": true,
+          "value": "assignment"
         }
       ]
     },
@@ -941,6 +951,31 @@
         }
       ]
     },
+    "assign_infallible_target": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "ok",
+          "content": {
+            "type": "SYMBOL",
+            "name": "assign_target"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ","
+        },
+        {
+          "type": "FIELD",
+          "name": "err",
+          "content": {
+            "type": "SYMBOL",
+            "name": "assign_target"
+          }
+        }
+      ]
+    },
     "_assign_infallible": {
       "type": "SEQ",
       "members": [
@@ -948,29 +983,8 @@
           "type": "FIELD",
           "name": "left",
           "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "FIELD",
-                "name": "ok",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "assign_target"
-                }
-              },
-              {
-                "type": "STRING",
-                "value": ","
-              },
-              {
-                "type": "FIELD",
-                "name": "err",
-                "content": {
-                  "type": "SYMBOL",
-                  "name": "assign_target"
-                }
-              }
-            ]
+            "type": "SYMBOL",
+            "name": "assign_infallible_target"
           }
         },
         {

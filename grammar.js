@@ -146,22 +146,22 @@ module.exports = grammar({
       '(',
         repeat($._non_terminal_newline),
         repeat1(seq(
-          $.assignment,
+          $._assignment,
           repeat1(choice($._non_terminal_newline, ';')),
         )),
-        optional($.assignment),
+        optional($._assignment),
         ')',
       ),
     ),
 
     _assignment_expr: $ => choice(
-      $.assignment,
+      $._assignment,
       $._arithmetic,
     ),
 
-    assignment: $ => choice(
-      $._assign_single,
-      $._assign_infallible,
+    _assignment: $ => choice(
+      alias($._assign_single, $.assignment),
+      alias($._assign_infallible, $.assignment),
     ),
 
     assign_target: $ => choice(
@@ -182,12 +182,14 @@ module.exports = grammar({
       field('right', $._expr),
     ),
 
+    assign_infallible_target: $ => seq(
+      field('ok', $.assign_target),
+      ',',
+      field('err', $.assign_target),
+    ),
+
     _assign_infallible: $ => seq(
-      field('left', seq(
-        field('ok', $.assign_target), // ok target
-        ',',
-        field('err', $.assign_target), // err target
-      )),
+      field('left', $.assign_infallible_target,),
       $._assign_operator,
       repeat($._non_terminal_newline),
       field('right', $._expr),

@@ -120,6 +120,32 @@
     }
   },
   {
+    "type": "assign_infallible_target",
+    "named": true,
+    "fields": {
+      "err": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assign_target",
+            "named": true
+          }
+        ]
+      },
+      "ok": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assign_target",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "assign_target",
     "named": true,
     "fields": {},
@@ -142,34 +168,14 @@
     "type": "assignment",
     "named": true,
     "fields": {
-      "err": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "assign_target",
-            "named": true
-          }
-        ]
-      },
       "left": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": "assign_target",
+            "type": "assign_infallible_target",
             "named": true
-          }
-        ]
-      },
-      "ok": {
-        "multiple": false,
-        "required": false,
-        "types": [
+          },
           {
             "type": "assign_target",
             "named": true
