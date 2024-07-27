@@ -404,18 +404,25 @@ module.exports = grammar({
 
     string: $ => seq(
       '"',
-      repeat($._string_content),
+      repeat(choice($._string_content, $.string_template)),
       '"',
     ),
 
+    string_template: $ => seq(
+      '{{',
+      $.ident,
+      '}}',
+    ),
+
     _string_content: $ =>choice(
-      /[^\\"\n]+/,
+      /[^\\"\n\{\}]+/,
       $.escape_sequence,
+      token.immediate(seq('{', /[^\{]/)),
     ),
 
     escape_sequence: _ => token.immediate(seq(
       '\\',
-      /("|\\|n|\n|0|r|t|\{)/,
+      /("|\\|n|\n|0|r|t|(\{\{)|(\}\}))/,
     )),
 
     raw_string: $ => seq(
