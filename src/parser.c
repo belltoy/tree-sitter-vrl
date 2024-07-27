@@ -1844,6 +1844,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
         '\n', 81,
         '"', 81,
         '0', 81,
+        'n', 81,
         'r', 81,
         't', 81,
         '{', 81,
@@ -1872,13 +1873,16 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == '\\') ADVANCE(91);
       END_STATE();
     case 20:
-      if (lookahead == '\n' ||
-          lookahead == '"' ||
-          lookahead == '0' ||
-          lookahead == '\\' ||
-          lookahead == 'r' ||
-          lookahead == 't' ||
-          lookahead == '{') ADVANCE(81);
+      ADVANCE_MAP(
+        '\n', 81,
+        '"', 81,
+        '0', 81,
+        '\\', 81,
+        'n', 81,
+        'r', 81,
+        't', 81,
+        '{', 81,
+      );
       END_STATE();
     case 21:
       if (eof) ADVANCE(28);
