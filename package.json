@@ -2,8 +2,9 @@
   "name": "tree-sitter-vrl",
   "version": "0.0.1",
   "description": "VRL grammar for tree-sitter",
-  "repository": "github:tree-sitter/tree-sitter-vrl",
+  "repository": "github:belltoy/tree-sitter-vrl",
   "license": "MIT",
+  "author": "Zhongqiu Zhao <belltoy@gmail.com>",
   "main": "bindings/node",
   "types": "bindings/node",
   "keywords": [

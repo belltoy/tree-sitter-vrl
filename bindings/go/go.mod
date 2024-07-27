@@ -1,4 +1,4 @@
-module github.com/tree-sitter/tree-sitter-vrl
+module github.com/belltoy/tree-sitter-vrl
 
 go 1.22
 
