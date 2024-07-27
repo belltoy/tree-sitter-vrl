@@ -69,6 +69,10 @@
 (integer) @number
 (float) @number
 (string) @string
+[
+ (raw_string_escape_sequence)
+ (escape_sequence)
+] @string.escape
 (boolean) @boolean
 
 (ident) @identifier
