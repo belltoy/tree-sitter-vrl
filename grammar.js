@@ -410,10 +410,11 @@ module.exports = grammar({
       '}}',
     ),
 
-    _string_content: $ =>choice(
+    _string_content: $ => choice(
       /[^\\"\n\{\}]+/,
       $.escape_sequence,
-      token.immediate(seq('{', /[^\{]/)),
+      seq(/\{/, $._string_content),
+      seq(/\}/, $._string_content),
     ),
 
     escape_sequence: _ => token.immediate(seq(
