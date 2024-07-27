@@ -24,6 +24,10 @@
         "named": true
       },
       {
+        "type": "regex",
+        "named": true
+      },
+      {
         "type": "string",
         "named": true
       },
@@ -855,6 +859,46 @@
     }
   },
   {
+    "type": "raw_string_escape_sequence",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "regex",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "regex_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "regex_content",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "regex_escape_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "regex_escape_content",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "return",
     "named": true,
     "fields": {},
@@ -1156,8 +1200,8 @@
     "named": false
   },
   {
-    "type": "raw_string_escape_sequence",
-    "named": true
+    "type": "r",
+    "named": false
   },
   {
     "type": "return",

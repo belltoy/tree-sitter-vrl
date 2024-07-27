@@ -67,12 +67,19 @@
   "|" @punctuation.bracket)
 
 (integer) @number
+
 (float) @number
+
 (string) @string
+
 [
  (raw_string_escape_sequence)
  (escape_sequence)
+ (regex_escape_sequence)
 ] @string.escape
+
+(regex_content) @string.regexp
+
 (boolean) @boolean
 
 (ident) @identifier

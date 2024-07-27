@@ -111,7 +111,7 @@ module.exports = grammar({
       $.float,
       $.boolean,
       $.null,
-      // $.regex,      // TODO:
+      $.regex,
       $.timestamp,
     ),
 
@@ -446,6 +446,25 @@ module.exports = grammar({
     ),
 
     raw_string_escape_sequence: $ => token.immediate(seq('\\', '\'')),
+
+    regex: $ => seq(
+      'r',
+      $.regex_content,
+    ),
+
+    regex_content: $ => seq(
+      '\'',
+      repeat($._regex_content),
+      '\'',
+    ),
+
+    _regex_content: $ => choice(
+      /[^\\']+/,
+      $.regex_escape_content,
+      token.immediate(seq('\\', /[^']/)),
+    ),
+
+    regex_escape_content: $ => token.immediate(seq('\\', '\'')),
 
     boolean: $ => /true|false/,
 
