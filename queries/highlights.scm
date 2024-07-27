@@ -63,6 +63,9 @@
  (timestamp)
 ] @constant.builtin
 
+(closure_variables
+  "|" @punctuation.bracket)
+
 (integer) @number
 (float) @number
 (string) @string
