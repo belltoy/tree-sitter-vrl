@@ -812,7 +812,7 @@
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "_assignment"
+                    "name": "_assignment_expr"
                   },
                   {
                     "type": "REPEAT1",
@@ -838,7 +838,7 @@
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "_assignment"
+                  "name": "_assignment_expr"
                 },
                 {
                   "type": "BLANK"
@@ -1631,7 +1631,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_arithmetic"
+          "name": "_assignment_expr"
         },
         {
           "type": "STRING",

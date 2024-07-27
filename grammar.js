@@ -146,10 +146,10 @@ module.exports = grammar({
       '(',
         repeat($._non_terminal_newline),
         repeat1(seq(
-          $._assignment,
+          $._assignment_expr,
           repeat1(choice($._non_terminal_newline, ';')),
         )),
-        optional($._assignment),
+        optional($._assignment_expr),
         ')',
       ),
     ),
@@ -332,7 +332,7 @@ module.exports = grammar({
       ),
     ),
 
-    group: $ => seq('(', $._arithmetic, ')'),
+    group: $ => seq('(', $._assignment_expr, ')'),
 
     _exprs: $ => choice(
       $._expr,

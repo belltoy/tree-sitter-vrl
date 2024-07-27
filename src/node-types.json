@@ -520,6 +520,10 @@
       "required": true,
       "types": [
         {
+          "type": "assignment",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
