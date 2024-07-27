@@ -60,6 +60,12 @@ module.exports = grammar({
     ),
 
     _arithmetic: $ => choice(
+      $.binary_expression,
+      $.unary_expression,
+      alias($._term, $.term),
+    ),
+
+    binary_expression: $ => choice(
       ...[
         ['??', 'error_coalesce'],
         ['||', 'logical_or'],
@@ -79,29 +85,20 @@ module.exports = grammar({
         ['-', 'binary_add'],
         ['*', 'binary_factor'],
         ['/', 'binary_factor'],
-        ['!', 'not'],
-        ['term', ''],
       ].map(([operator, precedence]) => {
-        if (operator === 'term') {
-          return $._term
-        } else
-        if (operator === '!') {
-          return prec.right(precedence, seq(
-            operator,
+        return prec.left(precedence, seq(
+            field('left', $._arithmetic),
+            field('operator', operator),
             field('right', $._arithmetic),
-          ))
-        } else {
-          return prec.left(precedence, seq(
-              field('left', $._arithmetic),
-              field('operator', operator),
-              field('right', $._arithmetic),
-          ))
-        }
-      })),
+        ))
+      })
+    ),
+
+    unary_expression: $ => prec.right('not', seq('!', field('right', $._arithmetic))),
 
     _term: $ => choice(
       $._literal,
-      prec.left(1, $.container), // higher than ??
+      prec.left(1, $._container), // higher than ??
       $.query,
       prec.left(1, $.function_call), // higher than ??
       $.ident,
@@ -109,16 +106,16 @@ module.exports = grammar({
 
     _literal: $ => choice(
       $.string,
-      // $.raw_string,
+      // $.raw_string, // TODO:
       $.integer,
       $.float,
       $.boolean,
       $.null,
-      // $.regex,
+      // $.regex,      // TODO:
       $.timestamp,
     ),
 
-    container: $ => choice(
+    _container: $ => choice(
       $.group,
       $.block,
       $.array,
@@ -163,7 +160,7 @@ module.exports = grammar({
     ),
 
     assignment: $ => choice(
-      $.assign_single,
+      $._assign_single,
       $._assign_infallible,
     ),
 
@@ -173,25 +170,27 @@ module.exports = grammar({
       $.ident,
     ),
 
-    assign_operator: $ => choice(
+    _assign_operator: $ => choice(
       '=',
       '|=',
     ),
 
-    assign_single: $ => seq(
-      $.assign_target,
-      $.assign_operator,
+    _assign_single: $ => seq(
+      field('left', $.assign_target),
+      $._assign_operator,
       repeat($._non_terminal_newline),
-      $._expr,
+      field('right', $._expr),
     ),
 
     _assign_infallible: $ => seq(
-      $.assign_target, // ok target
-      ',',
-      $.assign_target, // err target
-      $.assign_operator,
+      field('left', seq(
+        field('ok', $.assign_target), // ok target
+        ',',
+        field('err', $.assign_target), // err target
+      )),
+      $._assign_operator,
       repeat($._non_terminal_newline),
-      $._expr,
+      field('right', $._expr),
     ),
 
     /// The {L,R}Query token is an "instruction" token. It does not represent
@@ -229,7 +228,7 @@ module.exports = grammar({
       $.external_event,
       $.external_metadata,
       field('function_call', $.function_call),
-      $.container, // array or object
+      $._container, // array or object
       $.event,
       $.metadata,
       // $.query_target,
@@ -240,9 +239,6 @@ module.exports = grammar({
       $.ident,
       field('path', $.path_begin_with_dot),
     ),
-
-    _immediate_dot: _ => prec.left(token.immediate('.')),
-    _immediate_percent: _ => prec.left(token.immediate('%')),
 
     external_event: $ => prec.left(2, seq(
       '.',
@@ -262,7 +258,7 @@ module.exports = grammar({
     //   field('external', seq('.', $.path)),
     //   field('external_metadata', seq('%', $.path)),
     //   // field('function_call', $.function_call),
-    //   // $.container, // array or object
+    //   // $._container, // array or object
     // )),
 
     // path: $ => prec.left(repeat1($._path_segment)),
@@ -450,7 +446,10 @@ module.exports = grammar({
     ),
 
     ident: _ => token(/[_a-zA-Z0-9][a-zA-Z0-9_]*/),
+
     _immediate_ident: _ => token.immediate(/[a-zA-Z0-9][a-zA-Z0-9_]*/),
+
+    _immediate_dot: _ => prec.left(token.immediate('.')),
   }
 });
 
