@@ -106,7 +106,7 @@ module.exports = grammar({
 
     _literal: $ => choice(
       $.string,
-      // $.raw_string, // TODO:
+      $.raw_string,
       $.integer,
       $.float,
       $.boolean,
@@ -408,16 +408,37 @@ module.exports = grammar({
       '"',
     ),
 
-    _string_content: $ =>
-      choice(
-        /[^\\"\n]+/,
-        $.escape_sequence,
-      ),
+    _string_content: $ =>choice(
+      /[^\\"\n]+/,
+      $.escape_sequence,
+    ),
 
     escape_sequence: _ => token.immediate(seq(
       '\\',
       /("|\\|\n|0|r|t|\{)/,
     )),
+
+    raw_string: $ => seq(
+      's',
+      $.raw_string_content,
+    ),
+
+    raw_string_content: $ => seq(
+      '\'',
+      repeat($._raw_string_content),
+      '\'',
+    ),
+
+    _raw_string_content: $ => choice(
+      /[^\\']+/,
+      $.raw_string_escape_sequence,
+      token.immediate(seq(
+        '\\',
+        /[^']/,
+      )),
+    ),
+
+    raw_string_escape_sequence: $ => token.immediate(seq('\\', '\'')),
 
     boolean: $ => /true|false/,
 
