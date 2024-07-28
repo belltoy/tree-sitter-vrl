@@ -1,0 +1,741 @@
+==========================
+ampersat
+==========================
+
+# object: { "foo@bar": { "@buz" : [ { "wibble@" : 42 } ] } }
+# result: 42
+.foo@bar.@buz[0].wibble@
+
+--------------------------
+
+(program
+  (comment)
+  (comment)
+  (term
+    (query
+      (event)
+      (path
+        field: (field)
+        field: (field)
+        index: (integer)
+        field: (field)))))
+
+==========================
+array
+==========================
+
+# result: 2
+
+[0, { "bar": 2 }][1].bar
+
+--------------------------
+
+(program
+  (comment)
+  (term
+    (query
+      (array
+        (term
+          (integer))
+        (term
+          (object
+            (object_key
+              (string))
+            (term
+              (integer)))))
+      (path
+        index: (integer)
+        field: (field)))))
+
+==========================
+array indexing
+==========================
+
+# result:
+#
+# [
+#   null,
+#   null,
+#   null,
+#   "a",
+#   "b",
+#   "a",
+#   "b",
+#   null
+# ]
+
+[
+    [][0],
+    [][-1],
+    ["a", "b"][-3],
+    ["a", "b"][-2],
+    ["a", "b"][-1],
+    ["a", "b"][0],
+    ["a", "b"][1],
+    ["a", "b"][2],
+]
+
+--------------------------
+
+
+(program
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (term
+    (array
+      (term
+        (query
+          (array)
+          (path
+            index: (integer))))
+      (term
+        (query
+          (array)
+          (path
+            index: (integer))))
+      (term
+        (query
+          (array
+            (term
+              (string))
+            (term
+              (string)))
+          (path
+            index: (integer))))
+      (term
+        (query
+          (array
+            (term
+              (string))
+            (term
+              (string)))
+          (path
+            index: (integer))))
+      (term
+        (query
+          (array
+            (term
+              (string))
+            (term
+              (string)))
+          (path
+            index: (integer))))
+      (term
+        (query
+          (array
+            (term
+              (string))
+            (term
+              (string)))
+          (path
+            index: (integer))))
+      (term
+        (query
+          (array
+            (term
+              (string))
+            (term
+              (string)))
+          (path
+            index: (integer))))
+      (term
+        (query
+          (array
+            (term
+              (string))
+            (term
+              (string)))
+          (path
+            index: (integer)))))))
+
+==========================
+container_side_effect
+==========================
+
+# result: {"type": { "bytes": true }, "value": "foo"}
+. = 3
+{. = "foo"}.x
+{
+    "value": .,
+    "type": type_def(.)
+}
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_target
+      (query
+        (event)))
+    right: (term
+      (integer)))
+  (term
+    (query
+      (block
+        (assignment
+          left: (assign_target
+            (query
+              (event)))
+          right: (term
+            (string))))
+      (path
+        field: (field))))
+  (term
+    (object
+      (object_key
+        (string))
+      (term
+        (query
+          (event)))
+      (object_key
+        (string))
+      (term
+        (function_call
+          (ident)
+          arguments: (argument
+            (term
+              (query
+                (event)))))))))
+==========================
+external
+==========================
+
+# object: { "foo": 5 }
+# result: 5
+
+.foo
+
+--------------------------
+
+(program
+  (comment)
+  (comment)
+  (term
+    (query
+      (event)
+      (path
+        field: (field)))))
+
+==========================
+function_call
+==========================
+
+# result: 5
+
+parse_json!("{ \"foo\": 5 }").foo
+
+--------------------------
+
+(program
+  (comment)
+  (term
+    (query
+      (function_call
+        (ident)
+        arguments: (argument
+          (term
+            (string
+              (escape_sequence)
+              (escape_sequence)))))
+      (path
+        field: (field)))))
+
+==========================
+function_call_error
+==========================
+
+# result: "function call error for \"upcase\" at (10:24): expected string, got null"
+
+_, err = upcase(.thing).thing
+err
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_infallible_target
+      ok: (assign_target)
+      err: (assign_target
+        (ident)))
+    right: (term
+      (query
+        (function_call
+          (ident)
+          arguments: (argument
+            (term
+              (query
+                (event)
+                (path
+                  field: (field))))))
+        (path
+          field: (field)))))
+  (term
+    (ident)))
+
+==========================
+function_side_effect
+==========================
+
+# result: {"type": { "null": true }, "value": null}
+. = 3
+del(.).x
+{
+    "value": .,
+    "type": type_def(.)
+}
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_target
+      (query
+        (event)))
+    right: (term
+      (integer)))
+  (term
+    (query
+      (function_call
+        (ident)
+        arguments: (argument
+          (term
+            (query
+              (event)))))
+      (path
+        field: (field))))
+  (term
+    (object
+      (object_key
+        (string))
+      (term
+        (query
+          (event)))
+      (object_key
+        (string))
+      (term
+        (function_call
+          (ident)
+          arguments: (argument
+            (term
+              (query
+                (event)))))))))
+
+==========================
+mixed
+==========================
+
+# result: true
+
+[
+    null,
+    {
+        "foo": [
+            {
+                "bar": parse_json!("{ \"baz\": {\"0tar\": true} }").baz,
+            }
+        ]
+    }
+][1].foo[0].bar.0tar
+
+--------------------------
+
+(program
+  (comment)
+  (term
+    (query
+      (array
+        (term
+          (null))
+        (term
+          (object
+            (object_key
+              (string))
+            (term
+              (array
+                (term
+                  (object
+                    (object_key
+                      (string))
+                    (term
+                      (query
+                        (function_call
+                          (ident)
+                          arguments: (argument
+                            (term
+                              (string
+                                (escape_sequence)
+                                (escape_sequence)
+                                (escape_sequence)
+                                (escape_sequence)))))
+                        (path
+                          field: (field)))))))))))
+      (path
+        index: (integer)
+        field: (field)
+        index: (integer)
+        field: (field)
+        field: (field
+          (ident))))))
+
+==========================
+mixed_case
+==========================
+
+# result: 42
+
+_STRANGE.path = { "PATH": 42 }
+.__ThIs_.Most_Certainly.___Is_Some_Kind_of___ = _STRANGE.path
+
+.__ThIs_.Most_Certainly.___Is_Some_Kind_of___.PATH
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_target
+      (query
+        (ident)
+        (path
+          field: (field))))
+    right: (term
+      (object
+        (object_key
+          (string))
+        (term
+          (integer)))))
+  (assignment
+    left: (assign_target
+      (query
+        (event)
+        (path
+          field: (field)
+          field: (field)
+          field: (field))))
+    right: (term
+      (query
+        (ident)
+        (path
+          field: (field)))))
+  (term
+    (query
+      (event)
+      (path
+        field: (field)
+        field: (field)
+        field: (field)
+        field: (field)))))
+
+==========================
+object
+==========================
+
+# result: 5
+
+{ "foo": 5 }.foo
+
+--------------------------
+
+(program
+  (comment)
+  (term
+    (query
+      (object
+        (object_key
+          (string))
+        (term
+          (integer)))
+      (path
+        field: (field)))))
+
+==========================
+scalar
+:error
+==========================
+
+# result: ~
+#
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+# syntax error
+
+true.foo
+true[0]
+
+false.foo
+false[0]
+
+0.foo
+0[0]
+
+0.0.foo
+0.0[0]
+
+r'foo'.foo
+r'foo'[0]
+
+"foo".foo
+"foo"[0]
+
+null.foo
+null[0]
+
+t'2021-02-02T19:41:00Z'.foo
+t'2021-02-02T19:41:00Z'[0]
+
+--------------------------
+
+(program
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (ERROR
+    (term
+      (boolean))
+    (term
+      (boolean))
+    (term
+      (array
+        (term
+          (integer))))
+    (ERROR
+      (term
+        (boolean)))
+    (term
+      (boolean))
+    (term
+      (array
+        (term
+          (integer))))
+    (ERROR
+      (term
+        (float)))
+    (term
+      (integer))
+    (term
+      (array
+        (term
+          (integer))))
+    (ERROR
+      (term
+        (float)))
+    (term
+      (float))
+    (term
+      (array
+        (term
+          (integer))))
+    (ERROR
+      (term
+        (regex)))
+    (term
+      (regex))
+    (term
+      (array
+        (term
+          (integer))))
+    (ERROR
+      (term
+        (string)))
+    (term
+      (string))
+    (term
+      (array
+        (term
+          (integer))))
+    (ERROR
+      (term
+        (null)))
+    (term
+      (null))
+    (term
+      (array
+        (term
+          (integer))))
+    (ERROR
+      (term
+        (timestamp)))
+    (term
+      (timestamp)))
+  (term
+    (array
+      (term
+        (integer)))))
+
+==========================
+types
+==========================
+
+# This checks that a container type is considered a valid query target,
+# regardless of the inner types it contains.
+#
+# result: "two"
+
+{
+    "string": "foo",
+    "string_escaped": "foo\"bar\"\nbaz",
+    "integer": 123,
+    "integer_underscore": 123_001,
+    "float": 123.456,
+    "float_underscore": 123_001.456_002,
+    "boolean_true": true,
+    "boolean_false": false,
+    "object": { "one": "two" },
+    "array": ["one", "two"],
+    "raw_string": s'foo"bar"\n\'baz\'',
+    "timestamp": t'2021-02-02T19:41:00Z',
+    "regex": r'foo?bar',
+    "null": null,
+}.object.one
+
+--------------------------
+
+(program
+  (comment)
+  (comment)
+  (comment)
+  (comment)
+  (term
+    (query
+      (object
+        (object_key
+          (string))
+        (term
+          (string))
+        (object_key
+          (string))
+        (term
+          (string
+            (escape_sequence)
+            (escape_sequence)
+            (escape_sequence)))
+        (object_key
+          (string))
+        (term
+          (integer))
+        (object_key
+          (string))
+        (term
+          (integer))
+        (object_key
+          (string))
+        (term
+          (float))
+        (object_key
+          (string))
+        (term
+          (float))
+        (object_key
+          (string))
+        (term
+          (boolean))
+        (object_key
+          (string))
+        (term
+          (boolean))
+        (object_key
+          (string))
+        (term
+          (object
+            (object_key
+              (string))
+            (term
+              (string))))
+        (object_key
+          (string))
+        (term
+          (array
+            (term
+              (string))
+            (term
+              (string))))
+        (object_key
+          (string))
+        (term
+          (raw_string
+            (raw_string_escape_sequence)
+            (raw_string_escape_sequence)))
+        (object_key
+          (string))
+        (term
+          (timestamp))
+        (object_key
+          (string))
+        (term
+          (regex))
+        (object_key
+          (string))
+        (term
+          (null)))
+      (path
+        field: (field)
+        field: (field)))))
+
+==========================
+variable
+==========================
+
+# result: 2
+
+foo = { "bar": 2 }
+foo.bar
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (object
+        (object_key
+          (string))
+        (term
+          (integer)))))
+  (term
+    (query
+      (ident)
+      (path
+        field: (field)))))

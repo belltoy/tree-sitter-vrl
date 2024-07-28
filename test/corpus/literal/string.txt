@@ -1,0 +1,32 @@
+==========================
+String Literals
+==========================
+
+"Hello world!"
+
+"Greetings, {{ name }}!"
+
+log = "Complete text: \{\"id\": \"42\", \"flag\": false\}"
+
+--------------------------
+
+(program
+  (term
+    (string))
+  (term
+    (string
+      (string_template
+        (ident))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (string
+        (escape_sequence)
+        (escape_sequence)
+        (escape_sequence)
+        (escape_sequence)
+        (escape_sequence)
+        (escape_sequence)
+        (escape_sequence)
+        (escape_sequence)))))

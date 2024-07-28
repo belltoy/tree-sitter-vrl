@@ -1,0 +1,178 @@
+==========================
+Array Literals
+==========================
+
+# result: [true, 1, "bar"]
+
+# empty
+_arr = [ ]
+
+# single
+_arr = [true]
+_arr = [true,]
+
+# multiple
+_arr = [true, 1, "bar"]
+_arr = [true, 1, "bar",]
+
+_arr = [
+    true,
+    1,
+    "bar",
+]
+
+[
+    true,
+    1,
+    "bar"
+]
+
+--------------------------
+
+(program
+  (comment)
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (array)))
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (array
+        (term
+          (boolean)))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (array
+        (term
+          (boolean)))))
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (array
+        (term
+          (boolean))
+        (term
+          (integer))
+        (term
+          (string)))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (array
+        (term
+          (boolean))
+        (term
+          (integer))
+        (term
+          (string)))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (array
+        (term
+          (boolean))
+        (term
+          (integer))
+        (term
+          (string)))))
+  (term
+    (array
+      (term
+        (boolean))
+      (term
+        (integer))
+      (term
+        (string)))))
+
+==========================
+Array Type Def
+==========================
+
+# result: ["foo", 1, "bar", true]
+
+append(["foo", 1], array!(parse_json!(s'["bar", true]')))
+
+--------------------------
+
+(program
+  (comment)
+  (term
+    (function_call
+      (ident)
+      arguments: (argument
+        (term
+          (array
+            (term
+              (string))
+            (term
+              (integer)))))
+      arguments: (argument
+        (term
+          (function_call
+            (ident)
+            arguments: (argument
+              (term
+                (function_call
+                  (ident)
+                  arguments: (argument
+                    (term
+                      (raw_string))))))))))))
+
+==========================
+Array undefined upgrade
+==========================
+
+# result: {"x": [null], "typedef": {"array": {"0": {"null": true}}}}
+
+. = {}
+
+# x is an array of size one that is assigned an undefined value that is upgraded to null
+x = [.x]
+{"x": x, "typedef": type_def(x)}
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_target
+      (query
+        (event)))
+    right: (term
+      (object)))
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (array
+        (term
+          (query
+            (event)
+            (path
+              field: (field)))))))
+  (term
+    (object
+      (object_key
+        (string))
+      (term
+        (ident))
+      (object_key
+        (string))
+      (term
+        (function_call
+          (ident)
+          arguments: (argument
+            (term
+              (ident))))))))

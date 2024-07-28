@@ -1,0 +1,189 @@
+==========================
+Object Literals
+==========================
+
+# result: { "bar": 12.0, "foo": null }
+
+# empty
+_o = { }
+
+# single
+_o = { "foo": null }
+_o = { "foo": null, }
+
+# multiple
+_o = { "foo": null, "bar": 12.0 }
+_o = { "foo": null, "bar": 12.0, }
+_o = {
+    "foo": null,
+    "bar": 12.0,
+}
+
+{
+    "foo": null,
+    "bar": 12.0
+}
+
+--------------------------
+
+(program
+  (comment)
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (object)))
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (object
+        (object_key
+          (string))
+        (term
+          (null)))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (object
+        (object_key
+          (string))
+        (term
+          (null)))))
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (object
+        (object_key
+          (string))
+        (term
+          (null))
+        (object_key
+          (string))
+        (term
+          (float)))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (object
+        (object_key
+          (string))
+        (term
+          (null))
+        (object_key
+          (string))
+        (term
+          (float)))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (object
+        (object_key
+          (string))
+        (term
+          (null))
+        (object_key
+          (string))
+        (term
+          (float)))))
+  (term
+    (object
+      (object_key
+        (string))
+      (term
+        (null))
+      (object_key
+        (string))
+      (term
+        (float)))))
+
+==========================
+Object Type Def
+==========================
+
+# result: { "foo": "foo", "bar": "bar" }
+
+merge({ "foo": "foo" }, object!(parse_json!(s'{"bar":"bar"}')))
+
+--------------------------
+
+(program
+  (comment)
+  (term
+    (function_call
+      (ident)
+      arguments: (argument
+        (term
+          (object
+            (object_key
+              (string))
+            (term
+              (string)))))
+      arguments: (argument
+        (term
+          (function_call
+            (ident)
+            arguments: (argument
+              (term
+                (function_call
+                  (ident)
+                  arguments: (argument
+                    (term
+                      (raw_string))))))))))))
+
+==========================
+Object undefined upgrade
+==========================
+
+# result: {"x": {"foo": null}, "typedef": {"object": {"foo": {"null": true}}}}
+
+. = {}
+
+# x is an object containing a single field foo that is assigned an undefined value that is upgraded to null
+x = {"foo": .x}
+{"x": x, "typedef": type_def(x)}
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_target
+      (query
+        (event)))
+    right: (term
+      (object)))
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (object
+        (object_key
+          (string))
+        (term
+          (query
+            (event)
+            (path
+              field: (field)))))))
+  (term
+    (object
+      (object_key
+        (string))
+      (term
+        (ident))
+      (object_key
+        (string))
+      (term
+        (function_call
+          (ident)
+          arguments: (argument
+            (term
+              (ident))))))))

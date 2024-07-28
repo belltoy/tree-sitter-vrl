@@ -1,0 +1,37 @@
+==========================
+metadata_block_type
+==========================
+
+# result: {"object": {"foo": {"bytes": true}}}
+% = {}
+type_def({
+  %foo = "string"
+  %
+})
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_target
+      (query
+        (metadata)))
+    right: (term
+      (object)))
+  (term
+    (function_call
+      (ident)
+      arguments: (argument
+        (term
+          (block
+            (assignment
+              left: (assign_target
+                (query
+                  (path
+                    field: (field))))
+              right: (term
+                (string)))
+            (term
+              (query
+                (metadata)))))))))

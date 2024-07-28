@@ -1,0 +1,40 @@
+==========================
+If-else-if-else
+==========================
+# result: "yes 3"
+
+if false {
+    "yes"
+} else if false {
+    "yes 2"
+} else if true {
+    "yes 3"
+} else {
+    "no"
+}
+--------------------------
+
+(program
+  (comment)
+  (if_statement
+    condition: (predicate
+      (term
+        (boolean)))
+    (block
+      (term
+        (string)))
+    condition: (predicate
+      (term
+        (boolean)))
+    (block
+      (term
+        (string)))
+    condition: (predicate
+      (term
+        (boolean)))
+    (block
+      (term
+        (string)))
+    (block
+      (term
+        (string)))))

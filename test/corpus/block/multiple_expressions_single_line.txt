@@ -1,0 +1,29 @@
+==========================
+multiple expressions_single_line
+==========================
+
+# result: 6
+
+{ foo = 5; foo - 5; 1 + foo }
+
+--------------------------
+
+(program
+  (comment)
+  (term
+    (block
+      (assignment
+        left: (assign_target
+          (ident))
+        right: (term
+          (integer)))
+      (binary_expression
+        left: (term
+          (ident))
+        right: (term
+          (integer)))
+      (binary_expression
+        left: (term
+          (integer))
+        right: (term
+          (ident))))))

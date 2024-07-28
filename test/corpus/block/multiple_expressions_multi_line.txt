@@ -1,0 +1,33 @@
+==========================
+multiple_expressions_multi_line
+==========================
+
+# result: 6
+
+{
+    foo = 5
+    _x = 3
+    1 + foo
+}
+
+--------------------------
+
+(program
+  (comment)
+  (term
+    (block
+      (assignment
+        left: (assign_target
+          (ident))
+        right: (term
+          (integer)))
+      (assignment
+        left: (assign_target
+          (ident))
+        right: (term
+          (integer)))
+      (binary_expression
+        left: (term
+          (integer))
+        right: (term
+          (ident))))))

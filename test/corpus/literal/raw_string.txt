@@ -1,0 +1,23 @@
+==========================
+Raw String Literals
+==========================
+
+log = s'Complete text: \{\"id\": \"42\'\", \"flag\": false\}'
+
+multi_line = s'This is a
+               multi-line string.'
+
+--------------------------
+
+(program
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (raw_string
+        (raw_string_escape_sequence))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (raw_string))))

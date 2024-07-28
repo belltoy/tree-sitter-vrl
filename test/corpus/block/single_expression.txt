@@ -1,0 +1,16 @@
+==========================
+single_expression
+==========================
+
+# result: 5
+
+{ 5 }
+
+--------------------------
+
+(program
+  (comment)
+  (term
+    (block
+      (term
+        (integer)))))

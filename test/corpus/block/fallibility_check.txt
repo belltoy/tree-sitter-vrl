@@ -1,0 +1,51 @@
+==========================
+fallibility_check
+==========================
+
+# see: https://github.com/vectordotdev/vector/issues/13527
+# result: {"a": {}}
+.a = "string"
+{
+  _x = to_string(.a)
+  .a = {}
+}
+.
+
+--------------------------
+
+(program
+  (comment)
+  (comment)
+  (assignment
+    left: (assign_target
+      (query
+        (event)
+        (path
+          field: (field))))
+    right: (term
+      (string)))
+  (term
+    (block
+      (assignment
+        left: (assign_target
+          (ident))
+        right: (term
+          (function_call
+            (ident)
+            arguments: (argument
+              (term
+                (query
+                  (event)
+                  (path
+                    field: (field))))))))
+      (assignment
+        left: (assign_target
+          (query
+            (event)
+            (path
+              field: (field))))
+        right: (term
+          (object)))))
+  (term
+    (query
+      (event))))

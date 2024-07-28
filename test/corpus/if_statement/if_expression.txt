@@ -1,0 +1,103 @@
+==========================
+If expression
+==========================
+
+# result: true
+
+result = if true {
+  "string"
+}
+assert!(result == "string")
+assert!(type_def(result) == {"bytes": true, "null": true})
+
+
+result = if false {
+  "string"
+}
+assert!(result == null)
+assert!(type_def(result) == {"bytes": true, "null": true})
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (if_statement
+      condition: (predicate
+        (term
+          (boolean)))
+      (block
+        (term
+          (string)))))
+  (term
+    (function_call
+      (ident)
+      arguments: (argument
+        (binary_expression
+          left: (term
+            (ident))
+          right: (term
+            (string))))))
+  (term
+    (function_call
+      (ident)
+      arguments: (argument
+        (binary_expression
+          left: (term
+            (function_call
+              (ident)
+              arguments: (argument
+                (term
+                  (ident)))))
+          right: (term
+            (object
+              (object_key
+                (string))
+              (term
+                (boolean))
+              (object_key
+                (string))
+              (term
+                (boolean))))))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (if_statement
+      condition: (predicate
+        (term
+          (boolean)))
+      (block
+        (term
+          (string)))))
+  (term
+    (function_call
+      (ident)
+      arguments: (argument
+        (binary_expression
+          left: (term
+            (ident))
+          right: (term
+            (null))))))
+  (term
+    (function_call
+      (ident)
+      arguments: (argument
+        (binary_expression
+          left: (term
+            (function_call
+              (ident)
+              arguments: (argument
+                (term
+                  (ident)))))
+          right: (term
+            (object
+              (object_key
+                (string))
+              (term
+                (boolean))
+              (object_key
+                (string))
+              (term
+                (boolean)))))))))

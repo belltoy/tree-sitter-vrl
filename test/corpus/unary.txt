@@ -1,0 +1,27 @@
+==========================
+Not
+==========================
+
+# result: [false, true]
+
+[!!!true, !("foo" == "bar")]
+
+--------------------------
+
+(program
+  (comment)
+  (term
+    (array
+      (unary_expression
+        right: (unary_expression
+          right: (unary_expression
+            right: (term
+              (boolean)))))
+      (unary_expression
+        right: (term
+          (group
+            (binary_expression
+              left: (term
+                (string))
+              right: (term
+                (string)))))))))

@@ -1,0 +1,48 @@
+==========================
+Escapes
+==========================
+
+# result: This {{ is not a }} templated { string }
+
+"This \{{ is not a \}} templated { string }"
+
+--------------------------
+
+(program
+  (comment)
+  (term
+    (string
+      (escape_sequence)
+      (escape_sequence))))
+
+==========================
+Tempate
+==========================
+
+# result: This is a templated string.
+
+thing = "templated"
+thang = "string"
+
+"This is a {{ thing }} {{ thang }}."
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (string)))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (string)))
+  (term
+    (string
+      (string_template
+        (ident))
+      (string_template
+        (ident)))))

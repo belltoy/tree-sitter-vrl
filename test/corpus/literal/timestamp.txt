@@ -1,0 +1,17 @@
+==========================
+Timestamp Literals
+==========================
+
+t'2021-02-02T19:41:00Z'
+
+# Should be error
+t'hello'
+
+--------------------------
+
+(program
+  (term
+    (timestamp))
+  (comment)
+  (term
+    (timestamp)))

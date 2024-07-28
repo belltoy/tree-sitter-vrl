@@ -1,0 +1,138 @@
+==========================
+New lines
+==========================
+
+# result: [true, true, false, false, true, true]
+
+v1 = if true
+{
+    true
+}
+
+v2 = if true
+{ true }
+
+v3 = if false
+{ true } else
+{ false }
+
+v4 = if false
+{ true } else
+if false
+{ true } else
+{ false }
+
+v5 = if false {
+    true
+} else
+if false {
+    false
+} else {
+    true
+}
+
+v6 =
+    if true {
+        true }
+
+[v1, v2, v3, v4, v5, v6]
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (if_statement
+      condition: (predicate
+        (term
+          (boolean)))
+      (block
+        (term
+          (boolean)))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (if_statement
+      condition: (predicate
+        (term
+          (boolean)))
+      (block
+        (term
+          (boolean)))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (if_statement
+      condition: (predicate
+        (term
+          (boolean)))
+      (block
+        (term
+          (boolean)))
+      (block
+        (term
+          (boolean)))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (if_statement
+      condition: (predicate
+        (term
+          (boolean)))
+      (block
+        (term
+          (boolean)))
+      condition: (predicate
+        (term
+          (boolean)))
+      (block
+        (term
+          (boolean)))
+      (block
+        (term
+          (boolean)))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (if_statement
+      condition: (predicate
+        (term
+          (boolean)))
+      (block
+        (term
+          (boolean)))
+      condition: (predicate
+        (term
+          (boolean)))
+      (block
+        (term
+          (boolean)))
+      (block
+        (term
+          (boolean)))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (if_statement
+      condition: (predicate
+        (term
+          (boolean)))
+      (block
+        (term
+          (boolean)))))
+  (term
+    (array
+      (term
+        (ident))
+      (term
+        (ident))
+      (term
+        (ident))
+      (term
+        (ident))
+      (term
+        (ident))
+      (term
+        (ident)))))

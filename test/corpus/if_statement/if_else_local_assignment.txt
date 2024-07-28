@@ -1,0 +1,129 @@
+==========================
+If-else local assignment
+==========================
+# result: true
+
+a = 5
+if true {
+  a = 0.0
+} else {
+  a = "string"
+}
+assert!(a == 0.0)
+assert!(type_def(a) == {"float": true, "bytes": true})
+
+a = 5
+if false {
+  a = 0.0
+} else {
+  a = "string"
+}
+assert!(a == "string")
+assert!(type_def(a) == {"float": true, "bytes": true})
+
+--------------------------
+
+(program
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (integer)))
+  (if_statement
+    condition: (predicate
+      (term
+        (boolean)))
+    (block
+      (assignment
+        left: (assign_target
+          (ident))
+        right: (term
+          (float))))
+    (block
+      (assignment
+        left: (assign_target
+          (ident))
+        right: (term
+          (string)))))
+  (term
+    (function_call
+      (ident)
+      arguments: (argument
+        (binary_expression
+          left: (term
+            (ident))
+          right: (term
+            (float))))))
+  (term
+    (function_call
+      (ident)
+      arguments: (argument
+        (binary_expression
+          left: (term
+            (function_call
+              (ident)
+              arguments: (argument
+                (term
+                  (ident)))))
+          right: (term
+            (object
+              (object_key
+                (string))
+              (term
+                (boolean))
+              (object_key
+                (string))
+              (term
+                (boolean))))))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (term
+      (integer)))
+  (if_statement
+    condition: (predicate
+      (term
+        (boolean)))
+    (block
+      (assignment
+        left: (assign_target
+          (ident))
+        right: (term
+          (float))))
+    (block
+      (assignment
+        left: (assign_target
+          (ident))
+        right: (term
+          (string)))))
+  (term
+    (function_call
+      (ident)
+      arguments: (argument
+        (binary_expression
+          left: (term
+            (ident))
+          right: (term
+            (string))))))
+  (term
+    (function_call
+      (ident)
+      arguments: (argument
+        (binary_expression
+          left: (term
+            (function_call
+              (ident)
+              arguments: (argument
+                (term
+                  (ident)))))
+          right: (term
+            (object
+              (object_key
+                (string))
+              (term
+                (boolean))
+              (object_key
+                (string))
+              (term
+                (boolean)))))))))
