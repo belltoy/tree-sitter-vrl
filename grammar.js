@@ -413,13 +413,16 @@ module.exports = grammar({
     _string_content: $ => choice(
       /[^\\"\n\{\}]+/,
       $.escape_sequence,
-      seq(/\{/, $._string_content),
-      seq(/\}/, $._string_content),
+      /\{ |[^\{]/,
+      /\} |[^\}]/,
     ),
 
     escape_sequence: _ => token.immediate(seq(
       '\\',
-      /("|\\|n|\n|0|r|t|(\{\{)|(\}\}))/,
+      choice(
+        /("|\\|n|\n|0|r|t)/,
+        /\{|\}/,
+      )
     )),
 
     raw_string: $ => seq(

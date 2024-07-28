@@ -2199,30 +2199,12 @@
           "name": "escape_sequence"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "\\{"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_string_content"
-            }
-          ]
+          "type": "PATTERN",
+          "value": "\\{ |[^\\{]"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "\\}"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_string_content"
-            }
-          ]
+          "type": "PATTERN",
+          "value": "\\} |[^\\}]"
         }
       ]
     },
@@ -2236,8 +2218,17 @@
             "value": "\\"
           },
           {
-            "type": "PATTERN",
-            "value": "(\"|\\\\|n|\\n|0|r|t|(\\{\\{)|(\\}\\}))"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "(\"|\\\\|n|\\n|0|r|t)"
+              },
+              {
+                "type": "PATTERN",
+                "value": "\\{|\\}"
+              }
+            ]
           }
         ]
       }
