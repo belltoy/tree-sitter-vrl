@@ -14,17 +14,14 @@ Boolean Literals
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (boolean)))
+          (field))))
+    right: (boolean))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (boolean)))
-  (term
-    (query
-      (event))))
+          (field))))
+    right: (boolean))
+  (query
+    (event)))

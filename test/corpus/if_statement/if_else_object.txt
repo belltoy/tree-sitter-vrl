@@ -69,141 +69,120 @@ If-else object
       (query
         (event)
         (path
-          field: (field))))
+          (field))))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (object)))
+        (object))
       (block
-        (term
-          (object
-            (object_key
-              (string))
-            (term
-              (boolean)))))))
+        (object
+          (key
+            (string))
+          (value
+            (boolean))))))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
-            (query
-              (event)
-              (path
-                field: (field))))))))
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (query
+          (event)
+          (path
+            (field))))))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
+          (field))))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (object)))
+        (object))
       (block
-        (term
-          (object
-            (object_key
-              (string))
-            (term
-              (boolean)))))))
+        (object
+          (key
+            (string))
+          (value
+            (boolean))))))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
-            (query
-              (event)
-              (path
-                field: (field))))))))
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (query
+          (event)
+          (path
+            (field))))))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
+          (field))))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (object
-            (object_key
-              (string))
-            (term
-              (boolean)))))
+        (object
+          (key
+            (string))
+          (value
+            (boolean))))
       (block
-        (term
-          (object)))))
+        (object))))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
-            (query
-              (event)
-              (path
-                field: (field))))))))
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (query
+          (event)
+          (path
+            (field))))))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
+          (field))))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (object
-            (object_key
-              (string))
-            (term
-              (boolean)))))
+        (object
+          (key
+            (string))
+          (value
+            (boolean))))
       (block
-        (term
-          (object)))))
+        (object))))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
-            (query
-              (event)
-              (path
-                field: (field))))))))
-  (term
-    (query
-      (event))))
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (query
+          (event)
+          (path
+            (field))))))
+  (query
+    (event)))

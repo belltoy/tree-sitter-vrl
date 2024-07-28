@@ -35,65 +35,44 @@ _arr = [
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (array)))
+    right: (array))
   (comment)
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (array
-        (term
-          (boolean)))))
+    right: (array
+      (boolean)))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (array
-        (term
-          (boolean)))))
+    right: (array
+      (boolean)))
   (comment)
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (array
-        (term
-          (boolean))
-        (term
-          (integer))
-        (term
-          (string)))))
+    right: (array
+      (boolean)
+      (integer)
+      (string)))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (array
-        (term
-          (boolean))
-        (term
-          (integer))
-        (term
-          (string)))))
+    right: (array
+      (boolean)
+      (integer)
+      (string)))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (array
-        (term
-          (boolean))
-        (term
-          (integer))
-        (term
-          (string)))))
-  (term
-    (array
-      (term
-        (boolean))
-      (term
-        (integer))
-      (term
-        (string)))))
+    right: (array
+      (boolean)
+      (integer)
+      (string)))
+  (array
+    (boolean)
+    (integer)
+    (string)))
 
 ==========================
 Array Type Def
@@ -107,27 +86,20 @@ append(["foo", 1], array!(parse_json!(s'["bar", true]')))
 
 (program
   (comment)
-  (term
-    (function_call
-      (ident)
-      arguments: (argument
-        (term
-          (array
-            (term
-              (string))
-            (term
-              (integer)))))
-      arguments: (argument
-        (term
+  (function_call
+    function_name: (ident)
+    arguments: (argument
+      (array
+        (string)
+        (integer)))
+    arguments: (argument
+      (function_call
+        function_name: (ident)
+        arguments: (argument
           (function_call
-            (ident)
+            function_name: (ident)
             arguments: (argument
-              (term
-                (function_call
-                  (ident)
-                  arguments: (argument
-                    (term
-                      (raw_string))))))))))))
+              (raw_string))))))))
 
 ==========================
 Array undefined upgrade
@@ -149,30 +121,25 @@ x = [.x]
     left: (assign_target
       (query
         (event)))
-    right: (term
-      (object)))
+    right: (object))
   (comment)
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (array
-        (term
-          (query
-            (event)
-            (path
-              field: (field)))))))
-  (term
-    (object
-      (object_key
-        (string))
-      (term
-        (ident))
-      (object_key
-        (string))
-      (term
-        (function_call
-          (ident)
-          arguments: (argument
-            (term
-              (ident))))))))
+    right: (array
+      (query
+        (event)
+        (path
+          (field)))))
+  (object
+    (key
+      (string))
+    (value
+      (ident))
+    (key
+      (string))
+    (value
+      (function_call
+        function_name: (ident)
+        arguments: (argument
+          (ident))))))

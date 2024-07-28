@@ -46,93 +46,67 @@ v6 =
       (ident))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (boolean)))))
+        (boolean))))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (boolean)))))
+        (boolean))))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (boolean)))))
+        (boolean))))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (boolean)))
+        (boolean))
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (boolean)))))
+        (boolean))))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (boolean)))
+        (boolean))
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (boolean)))))
+        (boolean))))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (boolean)))))
-  (term
-    (array
-      (term
-        (ident))
-      (term
-        (ident))
-      (term
-        (ident))
-      (term
-        (ident))
-      (term
-        (ident))
-      (term
-        (ident)))))
+        (boolean))))
+  (array
+    (ident)
+    (ident)
+    (ident)
+    (ident)
+    (ident)
+    (ident)))

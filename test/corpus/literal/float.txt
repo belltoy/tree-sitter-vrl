@@ -10,11 +10,7 @@ Floating Point Literals
 --------------------------
 
 (program
-  (term
-    (float))
-  (term
-    (float))
-  (term
-    (float))
-  (term
-    (float)))
+  (float)
+  (float)
+  (float)
+  (float))

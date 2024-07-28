@@ -14,15 +14,10 @@ fallible
 (program
   (comment)
   (binary_expression
-    left: (term
-      (block
-        (term
-          (function_call
-            (ident)
-            arguments: (argument
-              (term
-                (string)))))
-        (term
-          (integer))))
-    right: (term
-      (integer))))
+    left: (block
+      (function_call
+        function_name: (ident)
+        arguments: (argument
+            (string)))
+        (integer))
+    right: (integer)))

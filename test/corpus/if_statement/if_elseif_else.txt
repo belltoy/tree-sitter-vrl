@@ -18,23 +18,16 @@ if false {
   (comment)
   (if_statement
     condition: (predicate
-      (term
-        (boolean)))
+      (boolean))
     (block
-      (term
-        (string)))
+      (string))
     condition: (predicate
-      (term
-        (boolean)))
+      (boolean))
     (block
-      (term
-        (string)))
+      (string))
     condition: (predicate
-      (term
-        (boolean)))
+      (boolean))
     (block
-      (term
-        (string)))
+      (string))
     (block
-      (term
-        (string)))))
+      (string))))

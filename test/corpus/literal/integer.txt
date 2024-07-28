@@ -11,9 +11,6 @@ Integer Literals
 --------------------------
 
 (program
-  (term
-    (integer))
-  (term
-    (integer))
-  (term
-    (integer)))
+  (integer)
+  (integer)
+  (integer))

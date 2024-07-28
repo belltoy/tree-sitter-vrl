@@ -13,11 +13,9 @@ multi_line = s'This is a
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (raw_string
-        (raw_string_escape_sequence))))
+    right: (raw_string
+        (raw_string_escape_sequence)))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (raw_string))))
+    right: (raw_string)))

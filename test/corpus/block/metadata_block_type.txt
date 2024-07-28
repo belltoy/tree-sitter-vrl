@@ -17,21 +17,17 @@ type_def({
     left: (assign_target
       (query
         (metadata)))
-    right: (term
-      (object)))
-  (term
-    (function_call
-      (ident)
-      arguments: (argument
-        (term
-          (block
-            (assignment
-              left: (assign_target
-                (query
-                  (path
-                    field: (field))))
-              right: (term
-                (string)))
-            (term
-              (query
-                (metadata)))))))))
+    right: (object))
+  (function_call
+    function_name: (ident)
+    arguments: (argument
+      (block
+        (assignment
+          left: (assign_target
+            (query
+              (metadata)
+              (path
+                (field))))
+          right: (string))
+        (query
+          (metadata))))))

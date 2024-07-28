@@ -32,77 +32,70 @@ _o = {
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (object)))
+    right: (object))
   (comment)
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (object
-        (object_key
-          (string))
-        (term
-          (null)))))
-  (assignment
-    left: (assign_target
-      (ident))
-    right: (term
-      (object
-        (object_key
-          (string))
-        (term
-          (null)))))
-  (comment)
-  (assignment
-    left: (assign_target
-      (ident))
-    right: (term
-      (object
-        (object_key
-          (string))
-        (term
-          (null))
-        (object_key
-          (string))
-        (term
-          (float)))))
-  (assignment
-    left: (assign_target
-      (ident))
-    right: (term
-      (object
-        (object_key
-          (string))
-        (term
-          (null))
-        (object_key
-          (string))
-        (term
-          (float)))))
-  (assignment
-    left: (assign_target
-      (ident))
-    right: (term
-      (object
-        (object_key
-          (string))
-        (term
-          (null))
-        (object_key
-          (string))
-        (term
-          (float)))))
-  (term
-    (object
-      (object_key
+    right: (object
+      (key
         (string))
-      (term
+      (value
+        (null))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (object
+      (key
+        (string))
+      (value
+        (null))))
+  (comment)
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (object
+      (key
+        (string))
+      (value
         (null))
-      (object_key
+      (key
         (string))
-      (term
-        (float)))))
+      (value
+        (float))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (object
+      (key
+        (string))
+      (value
+        (null))
+      (key
+        (string))
+      (value
+        (float))))
+  (assignment
+    left: (assign_target
+      (ident))
+    right: (object
+      (key
+        (string))
+      (value
+        (null))
+      (key
+        (string))
+      (value
+        (float))))
+  (object
+    (key
+      (string))
+    (value
+      (null))
+    (key
+      (string))
+    (value
+      (float))))
 
 ==========================
 Object Type Def
@@ -116,27 +109,22 @@ merge({ "foo": "foo" }, object!(parse_json!(s'{"bar":"bar"}')))
 
 (program
   (comment)
-  (term
-    (function_call
-      (ident)
-      arguments: (argument
-        (term
-          (object
-            (object_key
-              (string))
-            (term
-              (string)))))
-      arguments: (argument
-        (term
+  (function_call
+    function_name: (ident)
+    arguments: (argument
+      (object
+        (key
+          (string))
+        (value
+          (string))))
+    arguments: (argument
+      (function_call
+        function_name: (ident)
+        arguments: (argument
           (function_call
-            (ident)
+            function_name: (ident)
             arguments: (argument
-              (term
-                (function_call
-                  (ident)
-                  arguments: (argument
-                    (term
-                      (raw_string))))))))))))
+              (raw_string))))))))
 
 ==========================
 Object undefined upgrade
@@ -158,32 +146,28 @@ x = {"foo": .x}
     left: (assign_target
       (query
         (event)))
-    right: (term
-      (object)))
+    right: (object))
   (comment)
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (object
-        (object_key
-          (string))
-        (term
-          (query
-            (event)
-            (path
-              field: (field)))))))
-  (term
-    (object
-      (object_key
+    right: (object
+      (key
         (string))
-      (term
-        (ident))
-      (object_key
-        (string))
-      (term
-        (function_call
-          (ident)
-          arguments: (argument
-            (term
-              (ident))))))))
+      (value
+        (query
+          (event)
+          (path
+            (field))))))
+  (object
+    (key
+      (string))
+    (value
+      (ident))
+    (key
+      (string))
+    (value
+      (function_call
+        function_name: (ident)
+        arguments: (argument
+          (ident))))))

@@ -28,237 +28,166 @@ a5 = if status_code < 200 { "1xx" } else if status_code < 300 { "2xx" } else if 
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (integer)))
+    right: (integer))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))))
+        (string))))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (integer)))
+    right: (integer))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))))
+        (string))))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (integer)))
+    right: (integer))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))))
+        (string))))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (integer)))
+    right: (integer))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))))
+        (string))))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (integer)))
+    right: (integer))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))
+        (string))
       condition: (predicate
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (string)))))
-  (term
-    (array
-      (term
-        (ident))
-      (term
-        (ident))
-      (term
-        (ident))
-      (term
-        (ident))
-      (term
-        (ident)))))
+        (string))))
+  (array
+    (ident)
+    (ident)
+    (ident)
+    (ident)
+    (ident)))

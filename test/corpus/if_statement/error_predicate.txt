@@ -62,22 +62,17 @@ if contains(.noog, "thing") {
   (comment)
   (if_statement
     condition: (predicate
-      (term
-        (function_call
-          (ident)
-          arguments: (argument
-            (term
-              (query
-                (event)
-                (path
-                  field: (field)))))
-          arguments: (argument
-            (term
-              (string))))))
+      (function_call
+        function_name: (ident)
+        arguments: (argument
+          (query
+            (event)
+            (path
+              (field))))
+        arguments: (argument
+          (string))))
     (block
-      (term
-        (function_call
-          (ident)
-          arguments: (argument
-            (term
-              (string))))))))
+      (function_call
+        function_name: (ident)
+        arguments: (argument
+          (string))))))

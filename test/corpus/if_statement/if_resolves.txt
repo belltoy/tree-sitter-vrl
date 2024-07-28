@@ -19,38 +19,29 @@ assert!(type_def(result) == {"bytes": true, "null": true})
       (ident))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (string)))))
-  (term
-    (function_call
-      (ident)
-      arguments: (argument
-        (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (string))))))
-  (term
-    (function_call
-      (ident)
-      arguments: (argument
-        (binary_expression
-          left: (term
-            (function_call
-              (ident)
-              arguments: (argument
-                (term
-                  (ident)))))
-          right: (term
-            (object
-              (object_key
-                (string))
-              (term
-                (boolean))
-              (object_key
-                (string))
-              (term
-                (boolean)))))))))
+        (string))))
+  (function_call
+    function_name: (ident)
+    arguments: (argument
+      (binary_expression
+        left: (ident)
+        right: (string))))
+  (function_call
+    function_name: (ident)
+    arguments: (argument
+      (binary_expression
+        left: (function_call
+          function_name: (ident)
+          arguments: (argument
+            (ident)))
+        right: (object
+          (key
+            (string))
+          (value
+            (boolean))
+          (key
+            (string))
+          (value
+            (boolean)))))))

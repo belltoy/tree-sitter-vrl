@@ -21,23 +21,20 @@ abort_check
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (string)))
-  (term
-    (block
-      (assignment
-        left: (assign_target
-          (ident))
-        right: (term
-          (query
-            (event)
-            (path
-              field: (field)))))
-      (assignment
-        left: (assign_target
-          (query
-            (event)
-            (path
-              field: (field))))
-        right: (abort)))))
+          (field))))
+    right: (string))
+  (block
+    (assignment
+      left: (assign_target
+        (ident))
+      right: (query
+        (event)
+        (path
+          (field))))
+    (assignment
+      left: (assign_target
+        (query
+          (event)
+          (path
+            (field))))
+      right: (abort))))

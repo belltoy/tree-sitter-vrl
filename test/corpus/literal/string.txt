@@ -11,22 +11,19 @@ log = "Complete text: \{\"id\": \"42\", \"flag\": false\}"
 --------------------------
 
 (program
-  (term
-    (string))
-  (term
-    (string
-      (string_template
-        (ident))))
+  (string)
+  (string
+    (string_template
+      (ident)))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (string
-        (escape_sequence)
-        (escape_sequence)
-        (escape_sequence)
-        (escape_sequence)
-        (escape_sequence)
-        (escape_sequence)
-        (escape_sequence)
-        (escape_sequence)))))
+    right: (string
+      (escape_sequence)
+      (escape_sequence)
+      (escape_sequence)
+      (escape_sequence)
+      (escape_sequence)
+      (escape_sequence)
+      (escape_sequence)
+      (escape_sequence))))

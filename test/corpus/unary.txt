@@ -10,18 +10,13 @@ Not
 
 (program
   (comment)
-  (term
-    (array
-      (unary_expression
+  (array
+    (unary_expression
+      right: (unary_expression
         right: (unary_expression
-          right: (unary_expression
-            right: (term
-              (boolean)))))
-      (unary_expression
-        right: (term
-          (group
-            (binary_expression
-              left: (term
-                (string))
-              right: (term
-                (string)))))))))
+          right: (boolean))))
+    (unary_expression
+      right: (group
+        (binary_expression
+          left: (string)
+          right: (string))))))

@@ -52,8 +52,7 @@ v5 = if (x = x + 1; x == 9) {
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (integer)))
+    right: (integer))
   (assignment
     left: (assign_target
       (ident))
@@ -63,18 +62,13 @@ v5 = if (x = x + 1; x == 9) {
           left: (assign_target
             (ident))
           right: (binary_expression
-            left: (term
-              (ident))
-            right: (term
-              (integer))))
+            left: (ident)
+            right: (integer)))
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (boolean)))))
+        (boolean))))
   (assignment
     left: (assign_target
       (ident))
@@ -84,18 +78,13 @@ v5 = if (x = x + 1; x == 9) {
           left: (assign_target
             (ident))
           right: (binary_expression
-            left: (term
-              (ident))
-            right: (term
-              (integer))))
+            left: (ident)
+            right: (integer)))
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (boolean)))))
+        (boolean))))
   (assignment
     left: (assign_target
       (ident))
@@ -105,18 +94,13 @@ v5 = if (x = x + 1; x == 9) {
           left: (assign_target
             (ident))
           right: (binary_expression
-            left: (term
-              (ident))
-            right: (term
-              (integer))))
+            left: (ident)
+            right: (integer)))
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (boolean)))))
+        (boolean))))
   (assignment
     left: (assign_target
       (ident))
@@ -127,27 +111,20 @@ v5 = if (x = x + 1; x == 9) {
           left: (assign_target
             (ident))
           right: (binary_expression
-            left: (term
-              (ident))
-            right: (term
-              (integer))))
+            left: (ident)
+            right: (integer)))
         (comment)
         (assignment
           left: (assign_target
             (ident))
           right: (binary_expression
-            left: (term
-              (ident))
-            right: (term
-              (integer))))
+            left: (ident)
+            right: (integer)))
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (boolean)))))
+        (boolean))))
   (assignment
     left: (assign_target
       (ident))
@@ -157,44 +134,28 @@ v5 = if (x = x + 1; x == 9) {
           left: (assign_target
             (ident))
           right: (binary_expression
-            left: (term
-              (ident))
-            right: (term
-              (integer))))
+            left: (ident)
+            right: (integer)))
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (null)))
+        (null))
       condition: (predicate
         (assignment
           left: (assign_target
             (ident))
           right: (binary_expression
-            left: (term
-              (ident))
-            right: (term
-              (integer))))
+            left: (ident)
+            right: (integer)))
         (binary_expression
-          left: (term
-            (ident))
-          right: (term
-            (integer))))
+          left: (ident)
+          right: (integer)))
       (block
-        (term
-          (boolean)))))
-  (term
-    (array
-      (term
-        (ident))
-      (term
-        (ident))
-      (term
-        (ident))
-      (term
-        (ident))
-      (term
-        (ident)))))
+        (boolean))))
+  (array
+    (ident)
+    (ident)
+    (ident)
+    (ident)
+    (ident)))

@@ -18,30 +18,26 @@ assert!(false)
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (boolean)))
+          (field))))
+    right: (boolean))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
+          (field))))
     right: (abort))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (boolean)))
-  (term
-    (function_call
-      (ident)
-      arguments: (argument
-        (term
-          (boolean))))))
+          (field))))
+    right: (boolean))
+  (function_call
+    function_name: (ident)
+    arguments: (argument
+      (boolean))))
 
 ==========================
 Abort typedef
@@ -132,19 +128,98 @@ x = "string"
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (string)))
+    right: (string))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (block
+          (abort)))))
+  (assignment
+    left: (assign_target
+      (query
+        (event)
+        (path
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (block
+          (if_statement
+            condition: (predicate
+              (boolean))
+            (block
+              (abort))
+            (block
+              (string)))))))
+  (assignment
+    left: (assign_target
+      (query
+        (event)
+        (path
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (block
+          (if_statement
+            condition: (predicate
+              (boolean))
+            (block
+              (abort))
+            (block
+              (string)))))))
+  (assignment
+    left: (assign_target
+      (query
+        (event)
+        (path
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (block
+          (abort
+            message: (block
+              (if_statement
+                condition: (predicate
+                  (boolean))
+                (block
+                  (abort))
+                (block
+                  (string)))))))))
+  (assignment
+    left: (assign_target
+      (query
+        (event)
+        (path
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (block
+          (binary_expression
+            left: (object)
+            right: (block
+              (abort)))))))
+  (assignment
+    left: (assign_target
+      (query
+        (event)
+        (path
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (block
+          (if_statement
+            condition: (predicate
+              (boolean))
             (block
               (abort)))))))
   (assignment
@@ -152,152 +227,40 @@ x = "string"
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (block
+          (assignment
+            left: (assign_target
+              (ident))
+            right: (string))
+          (if_statement
+            condition: (predicate
+              (boolean))
             (block
-              (if_statement
-                condition: (predicate
-                  (term
-                    (boolean)))
-                (block
-                  (abort))
-                (block
-                  (term
-                    (string))))))))))
-  (assignment
-    left: (assign_target
-      (query
-        (event)
-        (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
-            (block
-              (if_statement
-                condition: (predicate
-                  (term
-                    (boolean)))
-                (block
-                  (abort))
-                (block
-                  (term
-                    (string))))))))))
-  (assignment
-    left: (assign_target
-      (query
-        (event)
-        (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
-            (block
-              (abort
-                message: (term
-                  (block
-                    (if_statement
-                      condition: (predicate
-                        (term
-                          (boolean)))
-                      (block
-                        (abort))
-                      (block
-                        (term
-                          (string)))))))))))))
-  (assignment
-    left: (assign_target
-      (query
-        (event)
-        (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
-            (block
-              (binary_expression
-                left: (term
-                  (object))
-                right: (term
-                  (block
-                    (abort))))))))))
-  (assignment
-    left: (assign_target
-      (query
-        (event)
-        (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
-            (block
-              (if_statement
-                condition: (predicate
-                  (term
-                    (boolean)))
-                (block
-                  (abort)))))))))
-  (assignment
-    left: (assign_target
-      (query
-        (event)
-        (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
+              (abort))
             (block
               (assignment
                 left: (assign_target
                   (ident))
-                right: (term
-                  (string)))
-              (if_statement
-                condition: (predicate
-                  (term
-                    (boolean)))
-                (block
-                  (abort))
-                (block
-                  (assignment
-                    left: (assign_target
-                      (ident))
-                    right: (term
-                      (integer)))))
-              (term
-                (ident))))))))
+                right: (integer))))
+          (ident)))))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
-            (block
-              (abort)
-              (term
-                (string))))))))
-  (term
-    (query
-      (event))))
+          (field))))
+    right: (function_call
+      function_name: (ident)
+      arguments: (argument
+        (block
+          (abort)
+          (string)))))
+  (query
+    (event)))
 
 ==========================
 Abort with complex message
@@ -325,56 +288,46 @@ abort {
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (integer)))
+          (field))))
+    right: (integer))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (boolean)))
+          (field))))
+    right: (boolean))
   (abort
-    message: (term
-      (block
-        (if_statement
-          condition: (predicate
-            (unary_expression
-              right: (term
+    message: (block
+      (if_statement
+        condition: (predicate
+          (unary_expression
+            right: (query
+              (event)
+              (path
+                (field)))))
+        (block
+          (binary_expression
+            left: (string)
+            right: (function_call
+              function_name: (ident)
+              arguments: (argument
                 (query
                   (event)
                   (path
-                    field: (field))))))
-          (block
-            (binary_expression
-              left: (term
-                (string))
-              right: (term
-                (function_call
-                  (ident)
-                  arguments: (argument
-                    (term
-                      (query
-                        (event)
-                        (path
-                          field: (field)))))))))
-          (block
-            (binary_expression
-              left: (term
-                (string))
-              right: (term
-                (function_call
-                  (ident)))))))))
+                    (field)))))))
+        (block
+          (binary_expression
+            left: (string)
+            right: (function_call
+              function_name: (ident)))))))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (boolean))))
+          (field))))
+    right: (boolean)))
 
 ==========================
 Abort with message
@@ -395,20 +348,17 @@ abort "a custom abort message"
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (boolean)))
+          (field))))
+    right: (boolean))
   (abort
-    message: (term
-      (string)))
+    message: (string))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (boolean))))
+          (field))))
+    right: (boolean)))
 
 ==========================
 Nested abort
@@ -426,36 +376,27 @@ assert!(false)
 (program
   (comment)
   (abort
-    message: (term
-      (block
-        (abort))))
+    message: (block
+      (abort)))
   (abort
-    message: (term
-      (block
-        (if_statement
-          condition: (predicate
-            (term
-              (boolean)))
-          (block
-            (term
-              (string)))
-          (block
-            (abort))))))
+    message: (block
+      (if_statement
+        condition: (predicate
+          (boolean))
+        (block
+          (string))
+        (block
+          (abort)))))
   (abort
-    message: (term
-      (block
-        (if_statement
-          condition: (predicate
-            (term
-              (boolean)))
-          (block
-            (term
-              (string)))
-          (block
-            (abort))))))
-  (term
-    (function_call
-      (ident)
-      arguments: (argument
-        (term
-          (boolean))))))
+    message: (block
+      (if_statement
+        condition: (predicate
+          (boolean))
+        (block
+          (string))
+        (block
+          (abort)))))
+  (function_call
+    function_name: (ident)
+    arguments: (argument
+      (boolean))))

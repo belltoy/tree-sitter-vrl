@@ -23,30 +23,21 @@ if2 = if false { "yes" } else { "no" }
       (ident))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (string)))
+        (string))
       (block
-        (term
-          (string)))))
+        (string))))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
-        (term
-          (string)))
+        (string))
       (block
-        (term
-          (string)))))
-  (term
-    (array
-      (term
-        (ident))
-      (term
-        (ident)))))
+        (string))))
+  (array
+    (ident)
+    (ident)))

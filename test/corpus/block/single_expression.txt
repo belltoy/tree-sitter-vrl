@@ -10,7 +10,5 @@ single_expression
 
 (program
   (comment)
-  (term
-    (block
-      (term
-        (integer)))))
+  (block
+    (integer)))

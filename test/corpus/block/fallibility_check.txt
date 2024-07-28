@@ -21,31 +21,25 @@ fallibility_check
       (query
         (event)
         (path
-          field: (field))))
-    right: (term
-      (string)))
-  (term
-    (block
-      (assignment
-        left: (assign_target
-          (ident))
-        right: (term
-          (function_call
-            (ident)
-            arguments: (argument
-              (term
-                (query
-                  (event)
-                  (path
-                    field: (field))))))))
-      (assignment
-        left: (assign_target
+          (field))))
+    right: (string))
+  (block
+    (assignment
+      left: (assign_target
+        (ident))
+      right: (function_call
+        function_name: (ident)
+        arguments: (argument
           (query
             (event)
             (path
-              field: (field))))
-        right: (term
-          (object)))))
-  (term
-    (query
-      (event))))
+              (field))))))
+    (assignment
+      left: (assign_target
+        (query
+          (event)
+          (path
+            (field))))
+      right: (object)))
+  (query
+    (event)))

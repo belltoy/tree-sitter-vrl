@@ -41,5 +41,4 @@ ok = true
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (boolean))))
+    right: (boolean)))

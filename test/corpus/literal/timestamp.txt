@@ -10,8 +10,6 @@ t'hello'
 --------------------------
 
 (program
-  (term
-    (timestamp))
+  (timestamp)
   (comment)
-  (term
-    (timestamp)))
+  (timestamp))

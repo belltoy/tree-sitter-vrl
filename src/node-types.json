@@ -46,7 +46,15 @@
         "required": false,
         "types": [
           {
+            "type": "_literal",
+            "named": true
+          },
+          {
             "type": "abort",
+            "named": true
+          },
+          {
+            "type": "array",
             "named": true
           },
           {
@@ -58,15 +66,35 @@
             "named": true
           },
           {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "ident",
+            "named": true
+          },
+          {
             "type": "if_statement",
             "named": true
           },
           {
-            "type": "return",
+            "type": "object",
             "named": true
           },
           {
-            "type": "term",
+            "type": "query",
+            "named": true
+          },
+          {
+            "type": "return",
             "named": true
           },
           {
@@ -86,7 +114,27 @@
       "required": true,
       "types": [
         {
+          "type": "_literal",
+          "named": true
+        },
+        {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "group",
           "named": true
         },
         {
@@ -94,7 +142,11 @@
           "named": true
         },
         {
-          "type": "term",
+          "type": "object",
+          "named": true
+        },
+        {
+          "type": "query",
           "named": true
         },
         {
@@ -113,11 +165,39 @@
       "required": false,
       "types": [
         {
+          "type": "_literal",
+          "named": true
+        },
+        {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "binary_expression",
           "named": true
         },
         {
-          "type": "term",
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "object",
+          "named": true
+        },
+        {
+          "type": "query",
           "named": true
         },
         {
@@ -159,10 +239,14 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "ident",
+          "named": true
+        },
+        {
+          "type": "noop",
           "named": true
         },
         {
@@ -195,7 +279,15 @@
         "required": true,
         "types": [
           {
+            "type": "_literal",
+            "named": true
+          },
+          {
             "type": "abort",
+            "named": true
+          },
+          {
+            "type": "array",
             "named": true
           },
           {
@@ -207,15 +299,35 @@
             "named": true
           },
           {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "ident",
+            "named": true
+          },
+          {
             "type": "if_statement",
             "named": true
           },
           {
-            "type": "return",
+            "type": "object",
             "named": true
           },
           {
-            "type": "term",
+            "type": "query",
+            "named": true
+          },
+          {
+            "type": "return",
             "named": true
           },
           {
@@ -235,11 +347,39 @@
         "required": true,
         "types": [
           {
+            "type": "_literal",
+            "named": true
+          },
+          {
+            "type": "array",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
           {
-            "type": "term",
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "ident",
+            "named": true
+          },
+          {
+            "type": "object",
+            "named": true
+          },
+          {
+            "type": "query",
             "named": true
           },
           {
@@ -315,11 +455,39 @@
         "required": true,
         "types": [
           {
+            "type": "_literal",
+            "named": true
+          },
+          {
+            "type": "array",
+            "named": true
+          },
+          {
             "type": "binary_expression",
             "named": true
           },
           {
-            "type": "term",
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "ident",
+            "named": true
+          },
+          {
+            "type": "object",
+            "named": true
+          },
+          {
+            "type": "query",
             "named": true
           },
           {
@@ -339,7 +507,15 @@
       "required": true,
       "types": [
         {
+          "type": "_literal",
+          "named": true
+        },
+        {
           "type": "abort",
+          "named": true
+        },
+        {
+          "type": "array",
           "named": true
         },
         {
@@ -351,15 +527,35 @@
           "named": true
         },
         {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
           "type": "if_statement",
           "named": true
         },
         {
-          "type": "return",
+          "type": "object",
           "named": true
         },
         {
-          "type": "term",
+          "type": "query",
+          "named": true
+        },
+        {
+          "type": "return",
           "named": true
         },
         {
@@ -436,10 +632,6 @@
         {
           "type": "ident",
           "named": true
-        },
-        {
-          "type": "string",
-          "named": true
         }
       ]
     }
@@ -465,18 +657,24 @@
             "named": true
           }
         ]
+      },
+      "function_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ident",
+            "named": true
+          }
+        ]
       }
     },
     "children": {
-      "multiple": true,
-      "required": true,
+      "multiple": false,
+      "required": false,
       "types": [
         {
           "type": "closure",
-          "named": true
-        },
-        {
-          "type": "ident",
           "named": true
         }
       ]
@@ -491,6 +689,14 @@
       "required": true,
       "types": [
         {
+          "type": "_literal",
+          "named": true
+        },
+        {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "assignment",
           "named": true
         },
@@ -499,7 +705,27 @@
           "named": true
         },
         {
-          "type": "term",
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "object",
+          "named": true
+        },
+        {
+          "type": "query",
           "named": true
         },
         {
@@ -536,39 +762,7 @@
     }
   },
   {
-    "type": "null",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "object",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "object_key",
-          "named": true
-        },
-        {
-          "type": "term",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "object_key",
+    "type": "key",
     "named": true,
     "fields": {},
     "children": {
@@ -583,41 +777,50 @@
     }
   },
   {
+    "type": "null",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "object",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "key",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "path",
     "named": true,
-    "fields": {
-      "field": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": ".",
-            "named": false
-          },
-          {
-            "type": "field",
-            "named": true
-          }
-        ]
-      },
-      "index": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "[",
-            "named": false
-          },
-          {
-            "type": "]",
-            "named": false
-          },
-          {
-            "type": "integer",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "field",
+          "named": true
+        },
+        {
+          "type": "index",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -629,6 +832,14 @@
       "required": true,
       "types": [
         {
+          "type": "_literal",
+          "named": true
+        },
+        {
+          "type": "array",
+          "named": true
+        },
+        {
           "type": "assignment",
           "named": true
         },
@@ -637,7 +848,27 @@
           "named": true
         },
         {
-          "type": "term",
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
+          "type": "object",
+          "named": true
+        },
+        {
+          "type": "query",
           "named": true
         },
         {
@@ -656,7 +887,15 @@
       "required": false,
       "types": [
         {
+          "type": "_literal",
+          "named": true
+        },
+        {
           "type": "abort",
+          "named": true
+        },
+        {
+          "type": "array",
           "named": true
         },
         {
@@ -668,15 +907,35 @@
           "named": true
         },
         {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
           "type": "if_statement",
           "named": true
         },
         {
-          "type": "return",
+          "type": "object",
           "named": true
         },
         {
-          "type": "term",
+          "type": "query",
+          "named": true
+        },
+        {
+          "type": "return",
           "named": true
         },
         {
@@ -782,7 +1041,15 @@
       "required": true,
       "types": [
         {
+          "type": "_literal",
+          "named": true
+        },
+        {
           "type": "abort",
+          "named": true
+        },
+        {
+          "type": "array",
           "named": true
         },
         {
@@ -794,15 +1061,35 @@
           "named": true
         },
         {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "ident",
+          "named": true
+        },
+        {
           "type": "if_statement",
           "named": true
         },
         {
-          "type": "return",
+          "type": "object",
           "named": true
         },
         {
-          "type": "term",
+          "type": "query",
+          "named": true
+        },
+        {
+          "type": "return",
           "named": true
         },
         {
@@ -847,7 +1134,64 @@
     }
   },
   {
-    "type": "term",
+    "type": "timestamp",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "unary_expression",
+    "named": true,
+    "fields": {
+      "right": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_literal",
+            "named": true
+          },
+          {
+            "type": "array",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "block",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "ident",
+            "named": true
+          },
+          {
+            "type": "object",
+            "named": true
+          },
+          {
+            "type": "query",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "value",
     "named": true,
     "fields": {},
     "children": {
@@ -860,6 +1204,10 @@
         },
         {
           "type": "array",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
           "named": true
         },
         {
@@ -885,37 +1233,12 @@
         {
           "type": "query",
           "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
         }
       ]
-    }
-  },
-  {
-    "type": "timestamp",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "unary_expression",
-    "named": true,
-    "fields": {
-      "right": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "binary_expression",
-            "named": true
-          },
-          {
-            "type": "term",
-            "named": true
-          },
-          {
-            "type": "unary_expression",
-            "named": true
-          }
-        ]
-      }
     }
   },
   {
@@ -932,10 +1255,6 @@
   },
   {
     "type": "\"",
-    "named": false
-  },
-  {
-    "type": "%",
     "named": false
   },
   {
@@ -1071,11 +1390,19 @@
     "named": false
   },
   {
+    "type": "index",
+    "named": true
+  },
+  {
     "type": "integer",
     "named": true
   },
   {
     "type": "metadata",
+    "named": true
+  },
+  {
+    "type": "noop",
     "named": true
   },
   {

@@ -30,37 +30,31 @@ type_def(.)
     left: (assign_target
       (query
         (event)))
-    right: (term
-      (object)))
+    right: (object))
   (assignment
     left: (assign_target
       (ident))
     right: (if_statement
       condition: (predicate
-        (term
-          (boolean)))
+        (boolean))
       (block
         (assignment
           left: (assign_target
             (query
               (event)
               (path
-                field: (field))))
-          right: (term
-            (boolean))))
+                (field))))
+          right: (boolean)))
       (block
         (assignment
           left: (assign_target
             (query
               (event)
               (path
-                field: (field))))
-          right: (term
-            (string))))))
-  (term
-    (function_call
-      (ident)
-      arguments: (argument
-        (term
-          (query
-            (event)))))))
+                (field))))
+          right: (string)))))
+  (function_call
+    function_name: (ident)
+    arguments: (argument
+      (query
+        (event)))))

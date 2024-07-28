@@ -11,14 +11,13 @@ ampersat
 (program
   (comment)
   (comment)
-  (term
-    (query
-      (event)
-      (path
-        field: (field)
-        field: (field)
-        index: (integer)
-        field: (field)))))
+  (query
+    (event)
+    (path
+      (field)
+      (field)
+      (index)
+      (field))))
 
 ==========================
 array
@@ -32,20 +31,17 @@ array
 
 (program
   (comment)
-  (term
-    (query
-      (array
-        (term
-          (integer))
-        (term
-          (object
-            (object_key
-              (string))
-            (term
-              (integer)))))
-      (path
-        index: (integer)
-        field: (field)))))
+  (query
+    (array
+      (integer)
+      (object
+        (key
+          (string))
+        (value
+          (integer))))
+    (path
+      (index)
+      (field))))
 
 ==========================
 array indexing
@@ -91,72 +87,51 @@ array indexing
   (comment)
   (comment)
   (comment)
-  (term
-    (array
-      (term
-        (query
-          (array)
-          (path
-            index: (integer))))
-      (term
-        (query
-          (array)
-          (path
-            index: (integer))))
-      (term
-        (query
-          (array
-            (term
-              (string))
-            (term
-              (string)))
-          (path
-            index: (integer))))
-      (term
-        (query
-          (array
-            (term
-              (string))
-            (term
-              (string)))
-          (path
-            index: (integer))))
-      (term
-        (query
-          (array
-            (term
-              (string))
-            (term
-              (string)))
-          (path
-            index: (integer))))
-      (term
-        (query
-          (array
-            (term
-              (string))
-            (term
-              (string)))
-          (path
-            index: (integer))))
-      (term
-        (query
-          (array
-            (term
-              (string))
-            (term
-              (string)))
-          (path
-            index: (integer))))
-      (term
-        (query
-          (array
-            (term
-              (string))
-            (term
-              (string)))
-          (path
-            index: (integer)))))))
+  (array
+    (query
+      (array)
+      (path
+        (index)))
+    (query
+      (array)
+      (path
+        (index)))
+    (query
+      (array
+        (string)
+        (string))
+      (path
+        (index)))
+    (query
+      (array
+        (string)
+        (string))
+      (path
+        (index)))
+    (query
+      (array
+        (string)
+        (string))
+      (path
+        (index)))
+    (query
+      (array
+        (string)
+        (string))
+      (path
+        (index)))
+    (query
+      (array
+        (string)
+        (string))
+      (path
+        (index)))
+    (query
+      (array
+        (string)
+        (string))
+      (path
+        (index)))))
 
 ==========================
 container_side_effect
@@ -178,35 +153,30 @@ container_side_effect
     left: (assign_target
       (query
         (event)))
-    right: (term
-      (integer)))
-  (term
-    (query
-      (block
-        (assignment
-          left: (assign_target
-            (query
-              (event)))
-          right: (term
-            (string))))
-      (path
-        field: (field))))
-  (term
-    (object
-      (object_key
-        (string))
-      (term
-        (query
-          (event)))
-      (object_key
-        (string))
-      (term
-        (function_call
-          (ident)
-          arguments: (argument
-            (term
-              (query
-                (event)))))))))
+    right: (integer))
+  (query
+    (block
+      (assignment
+        left: (assign_target
+          (query
+            (event)))
+        right: (string)))
+    (path
+      (field)))
+  (object
+    (key
+      (string))
+    (value
+      (query
+        (event)))
+    (key
+      (string))
+    (value
+      (function_call
+        function_name: (ident)
+        arguments: (argument
+          (query
+            (event)))))))
 ==========================
 external
 ==========================
@@ -221,11 +191,10 @@ external
 (program
   (comment)
   (comment)
-  (term
-    (query
-      (event)
-      (path
-        field: (field)))))
+  (query
+    (event)
+    (path
+      (field))))
 
 ==========================
 function_call
@@ -239,17 +208,15 @@ parse_json!("{ \"foo\": 5 }").foo
 
 (program
   (comment)
-  (term
-    (query
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
-            (string
-              (escape_sequence)
-              (escape_sequence)))))
-      (path
-        field: (field)))))
+  (query
+    (function_call
+      function_name: (ident)
+      arguments: (argument
+        (string
+          (escape_sequence)
+          (escape_sequence))))
+    (path
+      (field))))
 
 ==========================
 function_call_error
@@ -266,23 +233,21 @@ err
   (comment)
   (assignment
     left: (assign_infallible_target
-      ok: (assign_target)
+      ok: (assign_target
+        (noop))
       err: (assign_target
         (ident)))
-    right: (term
-      (query
-        (function_call
-          (ident)
-          arguments: (argument
-            (term
-              (query
-                (event)
-                (path
-                  field: (field))))))
-        (path
-          field: (field)))))
-  (term
-    (ident)))
+    right: (query
+      (function_call
+        function_name: (ident)
+        arguments: (argument
+          (query
+            (event)
+            (path
+              (field)))))
+      (path
+        (field))))
+  (ident))
 
 ==========================
 function_side_effect
@@ -304,34 +269,29 @@ del(.).x
     left: (assign_target
       (query
         (event)))
-    right: (term
-      (integer)))
-  (term
-    (query
-      (function_call
-        (ident)
-        arguments: (argument
-          (term
-            (query
-              (event)))))
-      (path
-        field: (field))))
-  (term
-    (object
-      (object_key
-        (string))
-      (term
+    right: (integer))
+  (query
+    (function_call
+      function_name: (ident)
+      arguments: (argument
         (query
-          (event)))
-      (object_key
-        (string))
-      (term
-        (function_call
-          (ident)
-          arguments: (argument
-            (term
-              (query
-                (event)))))))))
+          (event))))
+    (path
+      (field)))
+  (object
+    (key
+      (string))
+    (value
+      (query
+        (event)))
+    (key
+      (string))
+    (value
+      (function_call
+        function_name: (ident)
+        arguments: (argument
+          (query
+            (event)))))))
 
 ==========================
 mixed
@@ -354,41 +314,36 @@ mixed
 
 (program
   (comment)
-  (term
-    (query
-      (array
-        (term
-          (null))
-        (term
-          (object
-            (object_key
-              (string))
-            (term
-              (array
-                (term
-                  (object
-                    (object_key
-                      (string))
-                    (term
-                      (query
-                        (function_call
-                          (ident)
-                          arguments: (argument
-                            (term
-                              (string
-                                (escape_sequence)
-                                (escape_sequence)
-                                (escape_sequence)
-                                (escape_sequence)))))
-                        (path
-                          field: (field)))))))))))
-      (path
-        index: (integer)
-        field: (field)
-        index: (integer)
-        field: (field)
-        field: (field
-          (ident))))))
+  (query
+    (array
+      (null)
+      (object
+        (key
+          (string))
+        (value
+          (array
+            (object
+              (key
+                (string))
+              (value
+                (query
+                  (function_call
+                    function_name: (ident)
+                    arguments: (argument
+                      (string
+                        (escape_sequence)
+                        (escape_sequence)
+                        (escape_sequence)
+                        (escape_sequence))))
+                  (path
+                    (field)))))))))
+    (path
+      (index)
+      (field)
+      (index)
+      (field)
+      (field
+        (ident)))))
 
 ==========================
 mixed_case
@@ -410,34 +365,31 @@ _STRANGE.path = { "PATH": 42 }
       (query
         (ident)
         (path
-          field: (field))))
-    right: (term
-      (object
-        (object_key
-          (string))
-        (term
-          (integer)))))
+          (field))))
+    right: (object
+      (key
+        (string))
+      (value
+        (integer))))
   (assignment
     left: (assign_target
       (query
         (event)
         (path
-          field: (field)
-          field: (field)
-          field: (field))))
-    right: (term
-      (query
-        (ident)
-        (path
-          field: (field)))))
-  (term
-    (query
-      (event)
+          (field)
+          (field)
+          (field))))
+    right: (query
+      (ident)
       (path
-        field: (field)
-        field: (field)
-        field: (field)
-        field: (field)))))
+        (field))))
+  (query
+    (event)
+    (path
+      (field)
+      (field)
+      (field)
+      (field))))
 
 ==========================
 object
@@ -451,15 +403,14 @@ object
 
 (program
   (comment)
-  (term
-    (query
-      (object
-        (object_key
-          (string))
-        (term
-          (integer)))
-      (path
-        field: (field)))))
+  (query
+    (object
+      (key
+        (string))
+      (value
+        (integer)))
+    (path
+      (field))))
 
 ==========================
 scalar
@@ -531,77 +482,45 @@ t'2021-02-02T19:41:00Z'[0]
   (comment)
   (comment)
   (ERROR
-    (term
-      (boolean))
-    (term
-      (boolean))
-    (term
-      (array
-        (term
-          (integer))))
-    (ERROR
-      (term
-        (boolean)))
-    (term
-      (boolean))
-    (term
-      (array
-        (term
-          (integer))))
-    (ERROR
-      (term
-        (float)))
-    (term
-      (integer))
-    (term
-      (array
-        (term
-          (integer))))
-    (ERROR
-      (term
-        (float)))
-    (term
-      (float))
-    (term
-      (array
-        (term
-          (integer))))
-    (ERROR
-      (term
-        (regex)))
-    (term
-      (regex))
-    (term
-      (array
-        (term
-          (integer))))
-    (ERROR
-      (term
-        (string)))
-    (term
-      (string))
-    (term
-      (array
-        (term
-          (integer))))
-    (ERROR
-      (term
-        (null)))
-    (term
-      (null))
-    (term
-      (array
-        (term
-          (integer))))
-    (ERROR
-      (term
-        (timestamp)))
-    (term
-      (timestamp)))
-  (term
+    (boolean)
+    (boolean)
     (array
-      (term
-        (integer)))))
+      (integer))
+    (ERROR
+      (boolean))
+    (boolean)
+    (array
+      (integer))
+    (ERROR
+      (float))
+    (integer)
+    (array
+      (integer))
+    (ERROR
+      (float))
+    (float)
+    (array
+      (integer))
+    (ERROR
+      (regex))
+    (regex)
+    (array
+      (integer))
+    (ERROR
+      (string))
+    (string)
+    (array
+      (integer))
+    (ERROR
+      (null))
+    (null)
+    (array
+      (integer))
+    (ERROR
+      (timestamp))
+    (timestamp))
+  (array
+    (integer)))
 
 ==========================
 types
@@ -636,81 +555,78 @@ types
   (comment)
   (comment)
   (comment)
-  (term
-    (query
-      (object
-        (object_key
-          (string))
-        (term
-          (string))
-        (object_key
-          (string))
-        (term
-          (string
-            (escape_sequence)
-            (escape_sequence)
-            (escape_sequence)))
-        (object_key
-          (string))
-        (term
-          (integer))
-        (object_key
-          (string))
-        (term
-          (integer))
-        (object_key
-          (string))
-        (term
-          (float))
-        (object_key
-          (string))
-        (term
-          (float))
-        (object_key
-          (string))
-        (term
-          (boolean))
-        (object_key
-          (string))
-        (term
-          (boolean))
-        (object_key
-          (string))
-        (term
-          (object
-            (object_key
-              (string))
-            (term
-              (string))))
-        (object_key
-          (string))
-        (term
-          (array
-            (term
-              (string))
-            (term
-              (string))))
-        (object_key
-          (string))
-        (term
-          (raw_string
-            (raw_string_escape_sequence)
-            (raw_string_escape_sequence)))
-        (object_key
-          (string))
-        (term
-          (timestamp))
-        (object_key
-          (string))
-        (term
-          (regex))
-        (object_key
-          (string))
-        (term
-          (null)))
-      (path
-        field: (field)
-        field: (field)))))
+  (query
+    (object
+      (key
+        (string))
+      (value
+        (string))
+      (key
+        (string))
+      (value
+        (string
+          (escape_sequence)
+          (escape_sequence)
+          (escape_sequence)))
+      (key
+        (string))
+      (value
+        (integer))
+      (key
+        (string))
+      (value
+        (integer))
+      (key
+        (string))
+      (value
+        (float))
+      (key
+        (string))
+      (value
+        (float))
+      (key
+        (string))
+      (value
+        (boolean))
+      (key
+        (string))
+      (value
+        (boolean))
+      (key
+        (string))
+      (value
+        (object
+          (key
+            (string))
+          (value
+            (string))))
+      (key
+        (string))
+      (value
+        (array
+          (string)
+          (string)))
+      (key
+        (string))
+      (value
+        (raw_string
+          (raw_string_escape_sequence)
+          (raw_string_escape_sequence)))
+      (key
+        (string))
+      (value
+        (timestamp))
+      (key
+        (string))
+      (value
+        (regex))
+      (key
+        (string))
+      (value
+        (null)))
+    (path
+      (field)
+      (field))))
 
 ==========================
 variable
@@ -728,14 +644,12 @@ foo.bar
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (object
-        (object_key
-          (string))
-        (term
-          (integer)))))
-  (term
-    (query
-      (ident)
-      (path
-        field: (field)))))
+    right: (object
+      (key
+        (string))
+      (value
+        (integer))))
+  (query
+    (ident)
+    (path
+      (field))))

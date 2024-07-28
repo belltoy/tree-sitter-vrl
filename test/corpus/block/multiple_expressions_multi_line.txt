@@ -14,20 +14,15 @@ multiple_expressions_multi_line
 
 (program
   (comment)
-  (term
-    (block
-      (assignment
-        left: (assign_target
-          (ident))
-        right: (term
-          (integer)))
-      (assignment
-        left: (assign_target
-          (ident))
-        right: (term
-          (integer)))
-      (binary_expression
-        left: (term
-          (integer))
-        right: (term
-          (ident))))))
+  (block
+    (assignment
+      left: (assign_target
+        (ident))
+      right: (integer))
+    (assignment
+      left: (assign_target
+        (ident))
+      right: (integer))
+    (binary_expression
+      left: (integer)
+      right: (ident))))

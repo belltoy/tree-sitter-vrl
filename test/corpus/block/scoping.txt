@@ -34,59 +34,45 @@ push(result, upcase(foo))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (integer)))
+    right: (integer))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (array
-        (term
+    right: (array
+      (ident)))
+  (block
+    (comment)
+    (assignment
+      left: (assign_target
+        (ident))
+      right: (string))
+    (comment)
+    (assignment
+      left: (assign_target
+        (ident))
+      right: (integer))
+    (comment)
+    (assignment
+      left: (assign_target
+        (ident))
+      right: (function_call
+        function_name: (ident)
+        arguments: (argument
+          (ident))
+        arguments: (argument
           (ident)))))
-  (term
-    (block
-      (comment)
-      (assignment
-        left: (assign_target
-          (ident))
-        right: (term
-          (string)))
-      (comment)
-      (assignment
-        left: (assign_target
-          (ident))
-        right: (term
-          (integer)))
-      (comment)
-      (assignment
-        left: (assign_target
-          (ident))
-        right: (term
-          (function_call
-            (ident)
-            arguments: (argument
-              (term
-                (ident)))
-            arguments: (argument
-              (term
-                (ident))))))))
   (comment)
   (comment)
   (comment)
   (comment)
   (comment)
   (comment)
-  (term
-    (function_call
-      (ident)
-      arguments: (argument
-        (term
-          (ident)))
-      arguments: (argument
-        (term
-          (function_call
-            (ident)
-            arguments: (argument
-              (term
-                (ident)))))))))
-
+  (function_call
+    function_name: (ident)
+    arguments: (argument
+      (ident))
+    arguments: (argument
+      (function_call
+        function_name: (ident)
+        arguments: (argument
+          (ident))))))

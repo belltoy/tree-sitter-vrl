@@ -10,10 +10,9 @@ Escapes
 
 (program
   (comment)
-  (term
-    (string
-      (escape_sequence)
-      (escape_sequence))))
+(string
+  (escape_sequence)
+  (escape_sequence)))
 
 ==========================
 Tempate
@@ -33,16 +32,13 @@ thang = "string"
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (string)))
+    right: (string))
   (assignment
     left: (assign_target
       (ident))
-    right: (term
-      (string)))
-  (term
-    (string
-      (string_template
-        (ident))
-      (string_template
-        (ident)))))
+    right: (string))
+(string
+  (string_template
+    (ident))
+  (string_template
+    (ident))))

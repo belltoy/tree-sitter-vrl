@@ -62,7 +62,8 @@ module.exports = grammar({
     _arithmetic: $ => choice(
       $.binary_expression,
       $.unary_expression,
-      alias($._term, $.term),
+      $._term,
+      // alias($._term, $.term),
     ),
 
     binary_expression: $ => choice(
@@ -165,7 +166,7 @@ module.exports = grammar({
     ),
 
     assign_target: $ => choice(
-      '_',
+      alias('_', $.noop),
       $.query,
       $.ident,
     ),
@@ -246,35 +247,39 @@ module.exports = grammar({
     )),
 
     _external_metadata: $ => prec.left(2, seq(
-      '%',
+      alias('%', $.metadata),
       alias($._path_begin_without_dot, $.path),
     )),
 
     _path_begin_with_dot: $ => prec.left(seq(
       choice(
-        field('field', seq($._immediate_dot, $.field)),
-        field('index', seq('[', $.integer, ']')),
+        seq($._immediate_dot, $._field),
+        seq('[', alias($.integer, $.index), ']'),
       ),
       repeat($._path_segment),
     )),
 
     _path_begin_without_dot: $ => prec.left(seq(
       choice(
-        field('field', $.field),
-        field('index', seq('[', $.integer, ']')),
+        $._field,
+        seq('[', alias($.integer, $.index), ']'),
       ),
       repeat($._path_segment),
     )),
 
     _path_segment: $ => choice(
-      field('field', seq($._immediate_dot, $.field)),
-      field('index', seq('[', $.integer, ']')),
+      seq($._immediate_dot, $._field),
+      seq('[', alias($.integer, $.index), ']'),
+    ),
+
+    _field: $ => choice(
+      $.field,
+      $.string,
     ),
 
     field: $ => choice(
       $._any_ident,
       $._path_field,
-      $.string,
     ),
 
     _path_field: _ => token.immediate(/[@_a-zA-Z][@_a-zA-Z0-9]*/),
@@ -302,12 +307,12 @@ module.exports = grammar({
       seq(
         '{',
         repeat($._non_terminal_newline),
-        commaMultiline(seq($.object_key, ':', $._arithmetic), $),
+        commaMultiline(seq($.key, ':', alias($._arithmetic, $.value)), $),
         '}',
       ),
     ),
 
-    object_key: $ => $.string,
+    key: $ => $.string,
 
     array: $ => choice(
       seq('[', repeat($._non_terminal_newline), ']'),
@@ -338,7 +343,7 @@ module.exports = grammar({
       ),
 
     function_call: $ => seq(
-      $.ident,
+      field('function_name', $.ident),
       optional(token.immediate('!')),
       '(',
       repeat($._non_terminal_newline),

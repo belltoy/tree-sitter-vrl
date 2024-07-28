@@ -10,6 +10,5 @@ r'foo?bar"baz"\'qux'
 
 (program
   (comment)
-  (term
-    (regex
-      (regex_escape_sequence))))
+  (regex
+    (regex_escape_sequence)))
