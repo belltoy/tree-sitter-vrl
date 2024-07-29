@@ -425,8 +425,7 @@ module.exports = grammar({
     escape_sequence: _ => token.immediate(seq(
       '\\',
       choice(
-        /("|\\|n|\n|0|r|t)/,
-        /\{|\}/,
+        /('|"|\\|n|\n|0|r|t|\{|\})/,
       )
     )),
 
