@@ -1418,26 +1418,8 @@
                   "type": "SEQ",
                   "members": [
                     {
-                      "type": "SEQ",
-                      "members": [
-                        {
-                          "type": "SYMBOL",
-                          "name": "key"
-                        },
-                        {
-                          "type": "STRING",
-                          "value": ":"
-                        },
-                        {
-                          "type": "ALIAS",
-                          "content": {
-                            "type": "SYMBOL",
-                            "name": "_arithmetic"
-                          },
-                          "named": true,
-                          "value": "value"
-                        }
-                      ]
+                      "type": "SYMBOL",
+                      "name": "entry"
                     },
                     {
                       "type": "REPEAT",
@@ -1457,26 +1439,8 @@
                         "type": "SEQ",
                         "members": [
                           {
-                            "type": "SEQ",
-                            "members": [
-                              {
-                                "type": "SYMBOL",
-                                "name": "key"
-                              },
-                              {
-                                "type": "STRING",
-                                "value": ":"
-                              },
-                              {
-                                "type": "ALIAS",
-                                "content": {
-                                  "type": "SYMBOL",
-                                  "name": "_arithmetic"
-                                },
-                                "named": true,
-                                "value": "value"
-                              }
-                            ]
+                            "type": "SYMBOL",
+                            "name": "entry"
                           },
                           {
                             "type": "STRING",
@@ -1499,26 +1463,8 @@
                           "type": "SEQ",
                           "members": [
                             {
-                              "type": "SEQ",
-                              "members": [
-                                {
-                                  "type": "SYMBOL",
-                                  "name": "key"
-                                },
-                                {
-                                  "type": "STRING",
-                                  "value": ":"
-                                },
-                                {
-                                  "type": "ALIAS",
-                                  "content": {
-                                    "type": "SYMBOL",
-                                    "name": "_arithmetic"
-                                  },
-                                  "named": true,
-                                  "value": "value"
-                                }
-                              ]
+                              "type": "SYMBOL",
+                              "name": "entry"
                             },
                             {
                               "type": "REPEAT",
@@ -1543,6 +1489,28 @@
               "value": "}"
             }
           ]
+        }
+      ]
+    },
+    "entry": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "key"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_arithmetic"
+          },
+          "named": true,
+          "value": "value"
         }
       ]
     },
@@ -2246,11 +2214,7 @@
             "members": [
               {
                 "type": "PATTERN",
-                "value": "(\"|\\\\|n|\\n|0|r|t)"
-              },
-              {
-                "type": "PATTERN",
-                "value": "\\{|\\}"
+                "value": "('|\"|\\\\|n|\\n|0|r|t|\\{|\\})"
               }
             ]
           }

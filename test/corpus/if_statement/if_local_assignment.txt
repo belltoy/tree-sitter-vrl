@@ -49,14 +49,16 @@ assert!(type_def(a) == {"integer": true, "bytes": true})
           arguments: (argument
             (ident)))
         right: (object
-          (key
-            (string))
-          (value
-            (boolean))
-          (key
-            (string))
-          (value
-            (boolean))))))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))))))
   (assignment
     left: (assign_target
       (ident))
@@ -84,11 +86,13 @@ assert!(type_def(a) == {"integer": true, "bytes": true})
           arguments: (argument
             (ident)))
         right: (object
-          (key
-            (string))
-          (value
-            (boolean))
-          (key
-            (string))
-          (value
-            (boolean)))))))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean))))))))

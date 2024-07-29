@@ -307,10 +307,12 @@ module.exports = grammar({
       seq(
         '{',
         repeat($._non_terminal_newline),
-        commaMultiline(seq($.key, ':', alias($._arithmetic, $.value)), $),
+        commaMultiline($.entry, $),
         '}',
       ),
     ),
+
+    entry: $ => seq($.key, ':', alias($._arithmetic, $.value)),
 
     key: $ => $.string,
 

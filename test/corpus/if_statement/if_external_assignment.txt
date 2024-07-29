@@ -61,14 +61,16 @@ assert!(type_def(.a) == {"integer": true, "bytes": true})
               (path
                 (field)))))
         right: (object
-          (key
-            (string))
-          (value
-            (boolean))
-          (key
-            (string))
-          (value
-            (boolean))))))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))))))
   (assignment
     left: (assign_target
       (query
@@ -108,11 +110,13 @@ assert!(type_def(.a) == {"integer": true, "bytes": true})
               (path
                 (field)))))
         right: (object
-          (key
-            (string))
-          (value
-            (boolean))
-          (key
-            (string))
-          (value
-            (boolean)))))))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean))))))))

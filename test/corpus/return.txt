@@ -184,14 +184,16 @@ foo
     function_name: (ident)
     arguments: (argument
       (object
-        (key
-          (string))
-        (value
-          (string))
-        (key
-          (string))
-        (value
-          (string))))
+        (entry
+          (key
+            (string))
+          (value
+            (string)))
+        (entry
+          (key
+            (string))
+          (value
+            (string)))))
     (closure
       (closure_variables
         (closure_variable
@@ -230,14 +232,16 @@ for_each({ "foo": "bar", "lorem": "ipsum" }) -> |_key, _value| {
     function_name: (ident)
     arguments: (argument
       (object
-        (key
-          (string))
-        (value
-          (string))
-        (key
-          (string))
-        (value
-          (string))))
+        (entry
+          (key
+            (string))
+          (value
+            (string)))
+        (entry
+          (key
+            (string))
+          (value
+            (string)))))
     (closure
       (closure_variables
         (closure_variable
@@ -249,14 +253,16 @@ for_each({ "foo": "bar", "lorem": "ipsum" }) -> |_key, _value| {
           function_name: (ident)
           arguments: (argument
             (object
-              (key
-                (string))
-              (value
-                (string))
-              (key
-                (string))
-              (value
-                (string))))
+              (entry
+                (key
+                  (string))
+                (value
+                  (string)))
+              (entry
+                (key
+                  (string))
+                (value
+                  (string)))))
           (closure
             (closure_variables
               (closure_variable
@@ -299,26 +305,27 @@ for_each({ "foo": for_each({}) -> |_key, _value| { foo = 1; return true } }) -> 
     function_name: (ident)
     arguments: (argument
       (object
-        (key
-          (string))
-        (value
-          (function_call
-            function_name: (ident)
-            arguments: (argument
-              (object))
-            (closure
-              (closure_variables
-                (closure_variable
-                  (ident))
-                (closure_variable
-                  (ident)))
-              body: (block
-                (assignment
-                  left: (assign_target
+        (entry
+          (key
+            (string))
+          (value
+            (function_call
+              function_name: (ident)
+              arguments: (argument
+                (object))
+              (closure
+                (closure_variables
+                  (closure_variable
                     (ident))
-                  right: (integer))
-                (return
-                  (boolean))))))))
+                  (closure_variable
+                    (ident)))
+                body: (block
+                  (assignment
+                    left: (assign_target
+                      (ident))
+                    right: (integer))
+                  (return
+                    (boolean)))))))))
     (closure
       (closure_variables
         (closure_variable
@@ -356,10 +363,11 @@ filter({ "bar": null }) -> |_key, _value| {
     function_name: (ident)
     arguments: (argument
       (object
-        (key
-          (string))
-        (value
-          (null))))
+        (entry
+          (key
+            (string))
+          (value
+            (null)))))
     (closure
       (closure_variables
         (closure_variable
@@ -371,10 +379,11 @@ filter({ "bar": null }) -> |_key, _value| {
           function_name: (ident)
           arguments: (argument
             (object
-              (key
-                (string))
-              (value
-                (null))))
+              (entry
+                (key
+                  (string))
+                (value
+                  (null)))))
           (closure
             (closure_variables
               (closure_variable

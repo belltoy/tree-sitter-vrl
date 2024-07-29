@@ -37,11 +37,13 @@ assert!(type_def(result) == {"bytes": true, "null": true})
           arguments: (argument
             (ident)))
         right: (object
-          (key
-            (string))
-          (value
-            (boolean))
-          (key
-            (string))
-          (value
-            (boolean)))))))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean))))))))

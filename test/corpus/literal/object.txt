@@ -38,64 +38,74 @@ _o = {
     left: (assign_target
       (ident))
     right: (object
-      (key
-        (string))
-      (value
-        (null))))
+      (entry
+        (key
+          (string))
+        (value
+          (null)))))
   (assignment
     left: (assign_target
       (ident))
     right: (object
-      (key
-        (string))
-      (value
-        (null))))
+      (entry
+        (key
+          (string))
+        (value
+          (null)))))
   (comment)
   (assignment
     left: (assign_target
       (ident))
     right: (object
-      (key
-        (string))
-      (value
-        (null))
-      (key
-        (string))
-      (value
-        (float))))
+      (entry
+        (key
+          (string))
+        (value
+          (null)))
+      (entry
+        (key
+          (string))
+        (value
+          (float)))))
   (assignment
     left: (assign_target
       (ident))
     right: (object
-      (key
-        (string))
-      (value
-        (null))
-      (key
-        (string))
-      (value
-        (float))))
+      (entry
+        (key
+          (string))
+        (value
+          (null)))
+      (entry
+        (key
+          (string))
+        (value
+          (float)))))
   (assignment
     left: (assign_target
       (ident))
     right: (object
-      (key
-        (string))
-      (value
-        (null))
-      (key
-        (string))
-      (value
-        (float))))
+      (entry
+        (key
+          (string))
+        (value
+          (null)))
+      (entry
+        (key
+          (string))
+        (value
+          (float)))))
   (object
-    (key
-      (string))
-    (value
-      (null))
-    (key
-      (string))
-    (value
-      (float))))
+    (entry
+      (key
+        (string))
+      (value
+        (null)))
+    (entry
+      (key
+        (string))
+      (value
+        (float)))))
 
 ==========================
 Object Type Def
@@ -113,10 +123,11 @@ merge({ "foo": "foo" }, object!(parse_json!(s'{"bar":"bar"}')))
     function_name: (ident)
     arguments: (argument
       (object
-        (key
-          (string))
-        (value
-          (string))))
+        (entry
+          (key
+            (string))
+          (value
+            (string)))))
     arguments: (argument
       (function_call
         function_name: (ident)
@@ -152,22 +163,25 @@ x = {"foo": .x}
     left: (assign_target
       (ident))
     right: (object
+      (entry
+        (key
+          (string))
+        (value
+          (query
+            (event)
+            (path
+              (field)))))))
+  (object
+    (entry
       (key
         (string))
       (value
-        (query
-          (event)
-          (path
-            (field))))))
-  (object
-    (key
-      (string))
-    (value
-      (ident))
-    (key
-      (string))
-    (value
-      (function_call
-        function_name: (ident)
-        arguments: (argument
-          (ident))))))
+        (ident)))
+    (entry
+      (key
+        (string))
+      (value
+        (function_call
+          function_name: (ident)
+          arguments: (argument
+            (ident)))))))

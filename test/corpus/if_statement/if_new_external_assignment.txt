@@ -26,10 +26,11 @@ type_def(.a)
               (path
                 (field)))))
         right: (object
-          (key
-            (string))
-          (value
-            (boolean))))))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))))))
   (if_statement
     condition: (predicate
       (boolean))

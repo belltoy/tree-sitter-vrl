@@ -622,6 +622,25 @@
     }
   },
   {
+    "type": "entry",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "key",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "field",
     "named": true,
     "fields": {},
@@ -790,11 +809,7 @@
       "required": false,
       "types": [
         {
-          "type": "key",
-          "named": true
-        },
-        {
-          "type": "value",
+          "type": "entry",
           "named": true
         }
       ]

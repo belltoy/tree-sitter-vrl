@@ -132,14 +132,16 @@ x = [.x]
         (path
           (field)))))
   (object
-    (key
-      (string))
-    (value
-      (ident))
-    (key
-      (string))
-    (value
-      (function_call
-        function_name: (ident)
-        arguments: (argument
-          (ident))))))
+    (entry
+      (key
+        (string))
+      (value
+        (ident)))
+    (entry
+      (key
+        (string))
+      (value
+        (function_call
+          function_name: (ident)
+          arguments: (argument
+            (ident)))))))

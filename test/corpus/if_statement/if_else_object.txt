@@ -77,10 +77,11 @@ If-else object
         (object))
       (block
         (object
-          (key
-            (string))
-          (value
-            (boolean))))))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))))))
   (assignment
     left: (assign_target
       (query
@@ -107,10 +108,11 @@ If-else object
         (object))
       (block
         (object
-          (key
-            (string))
-          (value
-            (boolean))))))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))))))
   (assignment
     left: (assign_target
       (query
@@ -135,10 +137,11 @@ If-else object
         (boolean))
       (block
         (object
-          (key
-            (string))
-          (value
-            (boolean))))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))))
       (block
         (object))))
   (assignment
@@ -165,10 +168,11 @@ If-else object
         (boolean))
       (block
         (object
-          (key
-            (string))
-          (value
-            (boolean))))
+          (entry
+            (key
+              (string))
+            (value
+              (boolean)))))
       (block
         (object))))
   (assignment
