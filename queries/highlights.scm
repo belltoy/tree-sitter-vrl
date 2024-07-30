@@ -36,7 +36,7 @@
   (_)
   "}}" @punctuation.special)
 
-(regex) @regexp
+(regex) @string.regexp
 
 (boolean) @boolean
 
