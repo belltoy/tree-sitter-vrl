@@ -40,7 +40,10 @@
 
 ; VRL queries
 (query
-  (event) @variable.builtin)
+  [
+    (event)
+    (metadata)
+  ] @variable.builtin)
 
 (query
   (path
