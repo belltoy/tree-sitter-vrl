@@ -1,4 +1,4 @@
-;; vim:ft=query
+; vim:ft=query
 
 (closure_variables
   (ident) @local.definition.parameter)

@@ -1,4 +1,4 @@
-;; vim:ft=query
+; vim:ft=query
 
 [
   (block)
@@ -7,7 +7,8 @@
   (arguments)
 ] @indent.begin
 
-(block "}" @indent.end)
+(block
+  "}" @indent.end)
 
 (object
   "}" @indent.end)

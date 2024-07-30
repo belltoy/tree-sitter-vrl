@@ -1,4 +1,4 @@
-;; vim:ft=query
+; vim:ft=query
 
 (comment) @comment
 
@@ -7,9 +7,7 @@
   (boolean)
 ] @constant.builtin
 
-[
-  (timestamp)
-] @constant
+(timestamp) @constant
 
 (closure_variables
   "|" @punctuation.bracket)
@@ -51,7 +49,7 @@
 (function_call
   (ident) @function.call)
 
-;; VRL queries
+; VRL queries
 (query
   (path
     [
@@ -61,29 +59,29 @@
     ]))
 
 [
-   "abort"
-   ; "as"
-   ; "break"
-   ; "continue"
-   "else"
-   "false"
-   ; "for"
-   "if"
-   ; "impl"
-   ; "in"
-   ; "let"
-   ; "loop"
-   "null"
-   "return"
-   ; "self"
-   ; "std"
-   ; "then"
-   ; "this"
-   "true"
-   ; "type"
-   ; "until"
-   ; "use"
-   ; "while"
+  "abort"
+  ; "as"
+  ; "break"
+  ; "continue"
+  "else"
+  "false"
+  ; "for"
+  "if"
+  ; "impl"
+  ; "in"
+  ; "let"
+  ; "loop"
+  "null"
+  "return"
+  ; "self"
+  ; "std"
+  ; "then"
+  ; "this"
+  "true"
+  ; "type"
+  ; "until"
+  ; "use"
+  ; "while"
 ] @keyword
 
 [
@@ -114,7 +112,7 @@
   "]"
   "{"
   "}"
-]  @punctuation.bracket
+] @punctuation.bracket
 
 (function_call
   (ident) @keyword.exception
