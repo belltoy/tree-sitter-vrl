@@ -360,9 +360,14 @@ module.exports = grammar({
         ')',
     ),
 
-    _argument: $ => seq(
-      optional(seq($._any_ident, ':')),
+    _argument: $ => choice(
+      $.named_argument,
       $._arithmetic
+    ),
+    named_argument: $ => seq(
+      field("name", $._any_ident),
+      ':',
+      field("value", $._arithmetic),
     ),
 
     closure: $ => seq(
