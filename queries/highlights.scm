@@ -33,10 +33,7 @@
 
 (ident) @variable
 
-[
-  (null)
-  (noop)
-] @variable.builtin
+(noop) @variable.builtin
 
 (function_call
   (ident) @function.call)
