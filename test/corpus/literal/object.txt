@@ -121,20 +121,19 @@ merge({ "foo": "foo" }, object!(parse_json!(s'{"bar":"bar"}')))
   (comment)
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (object
         (entry
           (key
             (string))
           (value
-            (string)))))
-    arguments: (argument
+            (string))))
       (function_call
         function_name: (ident)
-        arguments: (argument
+        (arguments
           (function_call
             function_name: (ident)
-            arguments: (argument
+            (arguments
               (raw_string))))))))
 
 ==========================
@@ -183,5 +182,5 @@ x = {"foo": .x}
       (value
         (function_call
           function_name: (ident)
-          arguments: (argument
+          (arguments
             (ident)))))))

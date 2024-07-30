@@ -55,6 +55,6 @@ type_def(.)
           right: (string)))))
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (query
         (event)))))

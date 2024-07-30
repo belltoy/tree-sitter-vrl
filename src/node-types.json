@@ -106,12 +106,12 @@
     }
   },
   {
-    "type": "argument",
+    "type": "arguments",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "_literal",
@@ -592,21 +592,6 @@
     }
   },
   {
-    "type": "closure_variable",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "ident",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "closure_variables",
     "named": true,
     "fields": {},
@@ -615,7 +600,7 @@
       "required": false,
       "types": [
         {
-          "type": "closure_variable",
+          "type": "ident",
           "named": true
         }
       ]
@@ -659,24 +644,6 @@
     "type": "function_call",
     "named": true,
     "fields": {
-      "arguments": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "\n",
-            "named": false
-          },
-          {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": "argument",
-            "named": true
-          }
-        ]
-      },
       "function_name": {
         "multiple": false,
         "required": true,
@@ -689,9 +656,13 @@
       }
     },
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
         {
           "type": "closure",
           "named": true

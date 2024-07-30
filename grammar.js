@@ -347,14 +347,20 @@ module.exports = grammar({
     function_call: $ => seq(
       field('function_name', $.ident),
       optional(token.immediate('!')),
-      '(',
-      repeat($._non_terminal_newline),
-      field('arguments', optional(commaMultiline($.argument, $))),
-      ')',
-      optional($.closure),
+      seq(
+        $.arguments,
+        optional($.closure),
+      ),
     ),
 
-    argument: $ => seq(
+    arguments: $ => seq(
+        '(',
+        repeat($._non_terminal_newline),
+        optional(commaMultiline($._argument, $)),
+        ')',
+    ),
+
+    _argument: $ => seq(
       optional(seq($._any_ident, ':')),
       $._arithmetic
     ),
@@ -370,12 +376,12 @@ module.exports = grammar({
       '||',
       seq(
         '|',
-        optional(commaMultiline($.closure_variable, $)),
+        optional(commaMultiline($._closure_variable, $)),
         '|',
       )
     ),
 
-    closure_variable: $ => choice(
+    _closure_variable: $ => choice(
       $.ident,
       '_',
     ),

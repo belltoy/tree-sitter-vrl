@@ -90,7 +90,7 @@ If-else object
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (query
           (event)
           (path
@@ -121,7 +121,7 @@ If-else object
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (query
           (event)
           (path
@@ -152,7 +152,7 @@ If-else object
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (query
           (event)
           (path
@@ -183,7 +183,7 @@ If-else object
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (query
           (event)
           (path

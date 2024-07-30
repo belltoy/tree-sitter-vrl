@@ -20,7 +20,7 @@ type_def({
     right: (object))
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (block
         (assignment
           left: (assign_target

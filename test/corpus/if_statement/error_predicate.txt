@@ -64,15 +64,14 @@ if contains(.noog, "thing") {
     condition: (predicate
       (function_call
         function_name: (ident)
-        arguments: (argument
+        (arguments
           (query
             (event)
             (path
-              (field))))
-        arguments: (argument
+              (field)))
           (string))))
     (block
       (function_call
         function_name: (ident)
-        arguments: (argument
+        (arguments
           (string))))))

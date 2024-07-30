@@ -36,17 +36,17 @@ assert!(type_def(a) == {"integer": true, "bytes": true})
         right: (string))))
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (binary_expression
         left: (ident)
         right: (integer))))
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (binary_expression
         left: (function_call
           function_name: (ident)
-          arguments: (argument
+          (arguments
             (ident)))
         right: (object
           (entry
@@ -73,17 +73,17 @@ assert!(type_def(a) == {"integer": true, "bytes": true})
         right: (string))))
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (binary_expression
         left: (ident)
         right: (string))))
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (binary_expression
         left: (function_call
           function_name: (ident)
-          arguments: (argument
+          (arguments
             (ident)))
         right: (object
           (entry

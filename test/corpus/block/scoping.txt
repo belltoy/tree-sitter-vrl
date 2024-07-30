@@ -57,9 +57,8 @@ push(result, upcase(foo))
         (ident))
       right: (function_call
         function_name: (ident)
-        arguments: (argument
-          (ident))
-        arguments: (argument
+        (arguments
+          (ident)
           (ident)))))
   (comment)
   (comment)
@@ -69,10 +68,9 @@ push(result, upcase(foo))
   (comment)
   (function_call
     function_name: (ident)
-    arguments: (argument
-      (ident))
-    arguments: (argument
+    (arguments
+      (ident)
       (function_call
         function_name: (ident)
-        arguments: (argument
+        (arguments
           (ident))))))

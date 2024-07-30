@@ -36,7 +36,7 @@ assert!(false)
     right: (boolean))
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (boolean))))
 
 ==========================
@@ -137,7 +137,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (abort)))))
   (assignment
@@ -148,7 +148,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (if_statement
             condition: (predicate
@@ -165,7 +165,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (if_statement
             condition: (predicate
@@ -182,7 +182,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (abort
             message: (block
@@ -201,7 +201,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (binary_expression
             left: (object)
@@ -215,7 +215,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (if_statement
             condition: (predicate
@@ -230,7 +230,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (assignment
             left: (assign_target
@@ -255,7 +255,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (abort)
           (string)))))
@@ -311,7 +311,7 @@ abort {
             left: (string)
             right: (function_call
               function_name: (ident)
-              arguments: (argument
+              (arguments
                 (query
                   (event)
                   (path
@@ -320,7 +320,8 @@ abort {
           (binary_expression
             left: (string)
             right: (function_call
-              function_name: (ident)))))))
+              function_name: (ident)
+              (arguments)))))))
   (assignment
     left: (assign_target
       (query
@@ -398,5 +399,5 @@ assert!(false)
           (abort)))))
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (boolean))))

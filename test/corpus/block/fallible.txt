@@ -17,7 +17,7 @@ fallible
     left: (block
       (function_call
         function_name: (ident)
-        arguments: (argument
-            (string)))
+        (arguments
+          (string)))
         (integer))
     right: (integer)))

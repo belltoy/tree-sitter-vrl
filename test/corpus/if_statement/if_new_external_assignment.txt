@@ -16,11 +16,11 @@ type_def(.a)
   (comment)
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (binary_expression
         left: (function_call
           function_name: (ident)
-          arguments: (argument
+          (arguments
             (query
               (event)
               (path
@@ -44,7 +44,7 @@ type_def(.a)
         right: (string))))
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (query
         (event)
         (path

@@ -177,7 +177,7 @@ container_side_effect
       (value
         (function_call
           function_name: (ident)
-          arguments: (argument
+          (arguments
             (query
               (event))))))))
 ==========================
@@ -214,7 +214,7 @@ parse_json!("{ \"foo\": 5 }").foo
   (query
     (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (string
           (escape_sequence)
           (escape_sequence))))
@@ -243,7 +243,7 @@ err
     right: (query
       (function_call
         function_name: (ident)
-        arguments: (argument
+        (arguments
           (query
             (event)
             (path
@@ -276,7 +276,7 @@ del(.).x
   (query
     (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (query
           (event))))
     (path
@@ -294,7 +294,7 @@ del(.).x
       (value
         (function_call
           function_name: (ident)
-          arguments: (argument
+          (arguments
             (query
               (event))))))))
 
@@ -336,7 +336,7 @@ mixed
                     (query
                       (function_call
                         function_name: (ident)
-                        arguments: (argument
+                        (arguments
                           (string
                             (escape_sequence)
                             (escape_sequence)

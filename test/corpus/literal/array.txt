@@ -88,17 +88,16 @@ append(["foo", 1], array!(parse_json!(s'["bar", true]')))
   (comment)
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (array
         (string)
-        (integer)))
-    arguments: (argument
+        (integer))
       (function_call
         function_name: (ident)
-        arguments: (argument
+        (arguments
           (function_call
             function_name: (ident)
-            arguments: (argument
+            (arguments
               (raw_string))))))))
 
 ==========================
@@ -143,5 +142,5 @@ x = [.x]
       (value
         (function_call
           function_name: (ident)
-          arguments: (argument
+          (arguments
             (ident)))))))

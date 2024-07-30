@@ -110,17 +110,15 @@ filter([1, 2, 3]) -> |_key, _value| {
   (comment)
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (array
         (integer)
         (integer)
         (integer)))
     (closure
       (closure_variables
-        (closure_variable
-          (ident))
-        (closure_variable
-          (ident)))
+        (ident)
+        (ident))
       body: (block
         (return
           (integer))
@@ -182,7 +180,7 @@ foo
     right: (integer))
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (object
         (entry
           (key
@@ -196,10 +194,8 @@ foo
             (string)))))
     (closure
       (closure_variables
-        (closure_variable
+          (ident)
           (ident))
-        (closure_variable
-          (ident)))
       body: (block
         (return
           (integer))
@@ -230,7 +226,7 @@ for_each({ "foo": "bar", "lorem": "ipsum" }) -> |_key, _value| {
   (comment)
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (object
         (entry
           (key
@@ -244,14 +240,12 @@ for_each({ "foo": "bar", "lorem": "ipsum" }) -> |_key, _value| {
             (string)))))
     (closure
       (closure_variables
-        (closure_variable
+          (ident)
           (ident))
-        (closure_variable
-          (ident)))
       body: (block
         (function_call
           function_name: (ident)
-          arguments: (argument
+          (arguments
             (object
               (entry
                 (key
@@ -265,10 +259,8 @@ for_each({ "foo": "bar", "lorem": "ipsum" }) -> |_key, _value| {
                   (string)))))
           (closure
             (closure_variables
-              (closure_variable
+                (ident)
                 (ident))
-              (closure_variable
-                (ident)))
             body: (block
               (boolean))))
         (return
@@ -303,7 +295,7 @@ for_each({ "foo": for_each({}) -> |_key, _value| { foo = 1; return true } }) -> 
     right: (integer))
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (object
         (entry
           (key
@@ -311,27 +303,23 @@ for_each({ "foo": for_each({}) -> |_key, _value| { foo = 1; return true } }) -> 
           (value
             (function_call
               function_name: (ident)
-              arguments: (argument
+              (arguments
                 (object))
-              (closure
-                (closure_variables
-                  (closure_variable
-                    (ident))
-                  (closure_variable
-                    (ident)))
-                body: (block
-                  (assignment
-                    left: (assign_target
+                (closure
+                  (closure_variables
+                      (ident)
                       (ident))
-                    right: (integer))
-                  (return
-                    (boolean)))))))))
+                  body: (block
+                    (assignment
+                      left: (assign_target
+                        (ident))
+                      right: (integer))
+                    (return
+                      (boolean)))))))))
     (closure
       (closure_variables
-        (closure_variable
-          (ident))
-        (closure_variable
-          (ident)))
+        (ident)
+        (ident))
       body: (block
         (assignment
           left: (assign_target
@@ -361,7 +349,7 @@ filter({ "bar": null }) -> |_key, _value| {
   (comment)
   (function_call
     function_name: (ident)
-    arguments: (argument
+    (arguments
       (object
         (entry
           (key
@@ -370,14 +358,12 @@ filter({ "bar": null }) -> |_key, _value| {
             (null)))))
     (closure
       (closure_variables
-        (closure_variable
-          (ident))
-        (closure_variable
-          (ident)))
+        (ident)
+        (ident))
       body: (block
         (function_call
           function_name: (ident)
-          arguments: (argument
+          (arguments
             (object
               (entry
                 (key
@@ -386,10 +372,8 @@ filter({ "bar": null }) -> |_key, _value| {
                   (null)))))
           (closure
             (closure_variables
-              (closure_variable
-                (ident))
-              (closure_variable
-                (ident)))
+              (ident)
+              (ident))
             body: (block
               (return
                 (integer)))))
@@ -507,7 +491,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (return
             (query
@@ -520,7 +504,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (if_statement
             condition: (predicate
@@ -539,7 +523,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (if_statement
             condition: (predicate
@@ -558,7 +542,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (return
             (block
@@ -577,7 +561,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (binary_expression
             left: (object)
@@ -593,7 +577,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (if_statement
             condition: (predicate
@@ -610,7 +594,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (assignment
             left: (assign_target
@@ -637,7 +621,7 @@ x = "string"
           (field))))
     right: (function_call
       function_name: (ident)
-      arguments: (argument
+      (arguments
         (block
           (return
             (query
