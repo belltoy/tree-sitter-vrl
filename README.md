@@ -8,7 +8,7 @@ Vector Remap Language (VRL) grammar for [tree-sitter](https://github.com/tree-si
 - [x] Code folding
 - [x] Indentation
 - [x] Code injection
-- [ ] Local variables
+- [x] Local variables
 - [ ] Tagging
 
 ## Usage
@@ -105,7 +105,7 @@ techniques.
 
 ## TODO
 
-- [ ] Add unit tests
+- [x] Add unit tests
 - [ ] Detect RFC3339 format for `timestamp` type
 
 ## References
