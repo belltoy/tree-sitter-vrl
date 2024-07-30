@@ -1,11 +1,25 @@
 ;; vim:ft=query
 
 [
- (block)
- (object)
- ] @indent.begin
+  (block)
+  (object)
+  (array)
+  (arguments)
+] @indent.begin
 
-(block
+(block "}" @indent.end)
+
+(object
   "}" @indent.end)
 
-(object "}" @indent.end)
+(array
+  "]" @indent.end)
+
+(arguments
+  ")" @indent.end)
+
+[
+  ")"
+  "]"
+  "}"
+] @indent.branch
