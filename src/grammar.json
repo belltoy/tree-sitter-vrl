@@ -2228,13 +2228,8 @@
             "value": "\\"
           },
           {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "('|\"|\\\\|n|\\n|0|r|t|\\{|\\})"
-              }
-            ]
+            "type": "PATTERN",
+            "value": "('|\"|\\\\|n|\\n|0|r|t|\\{|\\})"
           }
         ]
       }
