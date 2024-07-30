@@ -1,4 +1,5 @@
 ;; vim:ft=query
+
 (comment) @comment
 
 [
@@ -8,14 +9,17 @@
 
 [
   (timestamp)
-] @string.special
+] @constant
 
 (closure_variables
   "|" @punctuation.bracket)
 
+(closure_variables
+  (ident) @variable.parameter)
+
 (integer) @number
 
-(float) @number.float
+(float) @number
 
 [
   (string)
@@ -28,7 +32,9 @@
   (regex_escape_sequence)
 ] @string.escape
 
-(string_template (ident) @variable)
+(string_template
+  (ident) @variable)
+
 (string_template
   "{{" @punctuation.special
   (_)
@@ -42,7 +48,17 @@
 
 (event) @variable.builtin
 
-(function_call (ident) @function.call)
+(function_call
+  (ident) @function.call)
+
+;; VRL queries
+(query
+  (path
+    [
+      (field) @variable
+      (string) @string
+      (index) @number
+    ]))
 
 [
    "abort"
@@ -88,6 +104,7 @@
   "??"
   "|"
   "!"
+  "."
 ] @operator
 
 [

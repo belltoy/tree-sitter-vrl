@@ -3,7 +3,11 @@
 (closure_variables
   (ident) @local.definition.parameter)
 
-(ident) @local.reference
+[
+  (ident)
+  (event)
+  (metadata)
+] @local.reference
 
 [
   (block)
