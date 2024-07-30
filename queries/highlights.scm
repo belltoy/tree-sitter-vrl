@@ -38,19 +38,18 @@
   (noop)
 ] @variable.builtin
 
-(query
-  (event) @variable.builtin)
-
 (function_call
   (ident) @function.call)
 
 ; VRL queries
 (query
+  (event) @variable.builtin
   (path
     [
       (field) @variable
       (string) @string
       (index) @number
+      "." @punctuation.delimiter
     ]))
 
 "return" @keyword.return
@@ -88,9 +87,6 @@
   ";"
   ","
 ] @punctuation.delimiter
-
-(path
-  "." @punctuation.delimiter)
 
 [
   "("
