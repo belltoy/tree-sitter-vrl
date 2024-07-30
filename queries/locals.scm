@@ -6,9 +6,8 @@
   (metadata)
 ] @local.reference
 
-; To prevent the (event) pattern from matching the unamed "." in the path field
-((event) @local.reference
-  (#not-has-parent? @local.reference path))
+(query
+  (event) @local.reference)
 
 [
   (block)

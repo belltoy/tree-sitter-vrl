@@ -38,9 +38,8 @@
   (noop)
 ] @variable.builtin
 
-; To prevent the `(event)` pattern from matching the unnamed "." in the path field
-((event) @variable.builtin
-  (#not-has-parent? @variable.builtin path))
+(query
+  (event) @variable.builtin)
 
 (function_call
   (ident) @function.call)
@@ -90,8 +89,8 @@
   ","
 ] @punctuation.delimiter
 
-("." @punctuation.delimiter
-  (#has-parent? @punctuation.delimiter path))
+(path
+  "." @punctuation.delimiter)
 
 [
   "("
