@@ -1,21 +1,15 @@
-(comment) @comment
+(comment) @comment @spell
 
-[
-  (null)
-  (boolean)
-] @constant.builtin
+(null) @constant.builtin
 
 (timestamp) @constant
-
-(closure_variables
-  "|" @punctuation.bracket)
 
 (closure_variables
   (ident) @variable.parameter)
 
 (integer) @number
 
-(float) @number
+(float) @number.float
 
 [
   (string)
@@ -29,9 +23,6 @@
 ] @string.escape
 
 (string_template
-  (ident) @variable)
-
-(string_template
   "{{" @punctuation.special
   (_)
   "}}" @punctuation.special)
@@ -42,7 +33,15 @@
 
 (ident) @variable
 
-(event) @variable.builtin
+[
+  (null)
+  ; (event)
+  (noop)
+] @variable.builtin
+
+; To prevent the (event) pattern from matching the unnamed "." in the path field
+((event) @variable.builtin
+  (#not-has-parent? @variable.builtin path))
 
 (function_call
   (ident) @function.call)
@@ -56,31 +55,14 @@
       (index) @number
     ]))
 
+"return" @keyword.return
+
+"abort" @keyword.exception
+
 [
-  "abort"
-  ; "as"
-  ; "break"
-  ; "continue"
-  "else"
-  "false"
-  ; "for"
   "if"
-  ; "impl"
-  ; "in"
-  ; "let"
-  ; "loop"
-  "null"
-  "return"
-  ; "self"
-  ; "std"
-  ; "then"
-  ; "this"
-  "true"
-  ; "type"
-  ; "until"
-  ; "use"
-  ; "while"
-] @keyword
+  "else"
+] @keyword.conditional
 
 [
   "="
@@ -100,8 +82,17 @@
   "??"
   "|"
   "!"
-  "."
 ] @operator
+
+[
+  "->"
+  ":"
+  ";"
+  ","
+] @punctuation.delimiter
+
+("." @punctuation.delimiter
+  (#has-parent? @punctuation.delimiter path))
 
 [
   "("
@@ -111,6 +102,9 @@
   "{"
   "}"
 ] @punctuation.bracket
+
+(closure_variables
+  "|" @punctuation.bracket)
 
 (function_call
   (ident) @keyword.exception
