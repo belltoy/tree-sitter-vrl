@@ -1,5 +1,3 @@
-; vim:ft=query
-
 (comment) @comment
 
 [
