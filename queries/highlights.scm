@@ -2,12 +2,12 @@
 (comment) @comment
 
 [
- (null)
- (boolean)
+  (null)
+  (boolean)
 ] @constant.builtin
 
 [
- (timestamp)
+  (timestamp)
 ] @string.special
 
 (closure_variables
@@ -18,14 +18,14 @@
 (float) @number.float
 
 [
- (string)
- (raw_string)
+  (string)
+  (raw_string)
 ] @string
 
 [
- (raw_string_escape_sequence)
- (escape_sequence)
- (regex_escape_sequence)
+  (raw_string_escape_sequence)
+  (escape_sequence)
+  (regex_escape_sequence)
 ] @string.escape
 
 (string_template (ident) @variable)
@@ -71,23 +71,23 @@
 ] @keyword
 
 [
- "="
- "=="
- "!="
- "|="
- ">"
- ">="
- "<"
- "<="
- "+"
- "-"
- "*"
- "/"
- "&&"
- "||"
- "??"
- "|"
- "!"
+  "="
+  "=="
+  "!="
+  "|="
+  ">"
+  ">="
+  "<"
+  "<="
+  "+"
+  "-"
+  "*"
+  "/"
+  "&&"
+  "||"
+  "??"
+  "|"
+  "!"
 ] @operator
 
 [
