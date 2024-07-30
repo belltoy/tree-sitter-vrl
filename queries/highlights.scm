@@ -35,11 +35,10 @@
 
 [
   (null)
-  ; (event)
   (noop)
 ] @variable.builtin
 
-; To prevent the (event) pattern from matching the unnamed "." in the path field
+; To prevent the `(event)` pattern from matching the unnamed "." in the path field
 ((event) @variable.builtin
   (#not-has-parent? @variable.builtin path))
 
