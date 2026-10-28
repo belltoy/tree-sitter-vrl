@@ -30,8 +30,7 @@ module.exports = grammar({
       'merge',
       'binary_comparison',
       'binary_equality',
-      'logical_and',
-      'logical_or',
+      'logical', // `&&` and `||` share one level, as in VRL's parser
       'error_coalesce',
     ],
     [
@@ -70,8 +69,8 @@ module.exports = grammar({
     binary_expression: $ => choice(
       ...[
         ['??', 'error_coalesce'],
-        ['||', 'logical_or'],
-        ['&&', 'logical_and'],
+        ['||', 'logical'],
+        ['&&', 'logical'],
 
         ['!=', 'binary_equality'],
         ['==', 'binary_equality'],

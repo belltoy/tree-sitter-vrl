@@ -149,7 +149,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": "logical_or",
+          "value": "logical",
           "content": {
             "type": "SEQ",
             "members": [
@@ -182,7 +182,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": "logical_and",
+          "value": "logical",
           "content": {
             "type": "SEQ",
             "members": [
@@ -2508,11 +2508,7 @@
       },
       {
         "type": "STRING",
-        "value": "logical_and"
-      },
-      {
-        "type": "STRING",
-        "value": "logical_or"
+        "value": "logical"
       },
       {
         "type": "STRING",
