@@ -45,7 +45,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Set up tree-sitter
-        uses: tree-sitter/setup-action/cli@v1
+        uses: tree-sitter/setup-action/cli@v2
       # Ensure the generated parser is up to date
       - run: tree-sitter generate
       - name: Run tests
