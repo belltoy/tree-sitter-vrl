@@ -56,6 +56,8 @@
 
 "return" @keyword.return
 
+"break" @keyword.return
+
 "abort" @keyword.exception
 
 [

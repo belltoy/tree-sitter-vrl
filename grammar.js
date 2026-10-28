@@ -56,6 +56,7 @@ module.exports = grammar({
       $.if_statement,
       $.abort,
       $.return,
+      $.break,
       $._assignment_expr,
     ),
 
@@ -294,6 +295,7 @@ module.exports = grammar({
       'false',
       'abort',
       'return',
+      'break',
     ),
 
     block: $ => seq(
@@ -403,6 +405,8 @@ module.exports = grammar({
           $._expr,
         ),
       ),
+
+    break: _ => 'break',
 
     comment: $ => token(prec(-10, /#.*/)),
 

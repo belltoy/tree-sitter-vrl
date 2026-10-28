@@ -86,6 +86,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "break"
+        },
+        {
+          "type": "SYMBOL",
           "name": "_assignment_expr"
         }
       ]
@@ -1343,6 +1347,10 @@
         {
           "type": "STRING",
           "value": "return"
+        },
+        {
+          "type": "STRING",
+          "value": "break"
         }
       ]
     },
@@ -2105,6 +2113,10 @@
           }
         ]
       }
+    },
+    "break": {
+      "type": "STRING",
+      "value": "break"
     },
     "comment": {
       "type": "TOKEN",
