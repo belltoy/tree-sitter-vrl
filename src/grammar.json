@@ -691,8 +691,8 @@
       ]
     },
     "if_statement": {
-      "type": "PREC_LEFT",
-      "value": 0,
+      "type": "PREC_DYNAMIC",
+      "value": 1,
       "content": {
         "type": "SEQ",
         "members": [
@@ -724,6 +724,13 @@
             "content": {
               "type": "SEQ",
               "members": [
+                {
+                  "type": "REPEAT",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_non_terminal_newline"
+                  }
+                },
                 {
                   "type": "STRING",
                   "value": "else"
@@ -767,6 +774,13 @@
               {
                 "type": "SEQ",
                 "members": [
+                  {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_non_terminal_newline"
+                    }
+                  },
                   {
                     "type": "STRING",
                     "value": "else"
@@ -2475,7 +2489,11 @@
       "name": "comment"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "if_statement"
+    ]
+  ],
   "precedences": [
     [
       {

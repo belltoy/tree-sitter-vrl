@@ -38,6 +38,11 @@ module.exports = grammar({
     ],
   ],
 
+  // `}` NEWLINE `else` continues an if; a bare NEWLINE ends it
+  conflicts: $ => [
+    [$.if_statement],
+  ],
+
   word: $ => $.ident,
 
   rules: {
@@ -123,13 +128,14 @@ module.exports = grammar({
       $.object,
     ),
 
-    if_statement: $ => prec.left(seq(
+    if_statement: $ => prec.dynamic(1, seq(
       'if',
       field('condition', $.predicate),
       repeat($._non_terminal_newline),
       $.block,
 
       repeat(seq(
+        repeat($._non_terminal_newline),
         'else',
         repeat($._non_terminal_newline),
         'if',
@@ -138,7 +144,7 @@ module.exports = grammar({
         $.block,
       )),
 
-      optional(seq('else', repeat($._non_terminal_newline), $.block)),
+      optional(seq(repeat($._non_terminal_newline), 'else', repeat($._non_terminal_newline), $.block)),
     )),
 
     predicate: $ => choice(
