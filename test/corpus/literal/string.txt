@@ -27,3 +27,16 @@ log = "Complete text: \{\"id\": \"42\", \"flag\": false\}"
       (escape_sequence)
       (escape_sequence)
       (escape_sequence))))
+
+==========================
+Unicode Escape
+==========================
+
+"snow \u{2603} \u{1F600}"
+
+--------------------------
+
+(program
+  (string
+    (escape_sequence)
+    (escape_sequence)))

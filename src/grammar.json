@@ -2229,8 +2229,17 @@
             "value": "\\"
           },
           {
-            "type": "PATTERN",
-            "value": "('|\"|\\\\|n|\\n|0|r|t|\\{|\\})"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "('|\"|\\\\|n|\\n|0|r|t|\\{|\\})"
+              },
+              {
+                "type": "PATTERN",
+                "value": "u\\{[0-9a-fA-F]{1,6}\\}"
+              }
+            ]
           }
         ]
       }
