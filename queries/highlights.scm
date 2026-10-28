@@ -1,75 +1,76 @@
-(comment) @comment @spell
+; Based on highlights.scm from https://github.com/belltoy/zed-vrl/pull/1
+; ("Improve highlights.scm precision and capture names") by @pront.
 
+; Comments
+(comment) @comment
+
+; Literals
 (null) @constant.builtin
-
-(timestamp) @constant
-
-(closure_variables
-  (ident) @variable.parameter)
-
+(boolean) @boolean
 (integer) @number
+(float) @number
+(timestamp) @string.special
 
-(float) @number.float
-
-[
-  (string)
-  (raw_string)
-] @string
-
-[
-  (raw_string_escape_sequence)
-  (escape_sequence)
-  (regex_escape_sequence)
-] @string.escape
+; Strings
+(string) @string
+(raw_string) @string
+(regex) @string.regexp
+(escape_sequence) @string.escape
+(raw_string_escape_sequence) @string.escape
+(regex_escape_sequence) @string.escape
 
 (string_template
   "{{" @punctuation.special
-  (_)
   "}}" @punctuation.special)
 
-(regex) @string.regexp
-
-(boolean) @boolean
-
-(ident) @variable
-
-(noop) @variable.builtin
-
+; Functions
 (function_call
-  (ident) @function.call)
+  function_name: (ident) @function)
 
-; VRL queries
+; assert / assert_eq raise errors — highlight distinctly
+(function_call
+  function_name: (ident) @keyword
+  (#any-of? @keyword "assert" "assert_eq"))
+
+; Closure parameters
+(closure_variables
+  (ident) @variable.parameter)
+
+; VRL event/metadata roots (. and %)
 (query
-  [
-    (event)
-    (metadata)
-  ] @variable.builtin)
+  [(event) (metadata)] @variable.builtin)
 
+; Path fields inside a query
 (query
   (path
     [
-      (field) @variable
+      (field) @property
       (string) @string
       (index) @number
       "." @punctuation.delimiter
     ]))
 
-"return" @keyword.return
+; _ (noop assign target)
+(noop) @variable.builtin
 
-"break" @keyword.return
+; Plain identifiers
+(ident) @variable
 
-"abort" @keyword.exception
-
+; Keywords
 [
   "if"
   "else"
-] @keyword.conditional
+  "return"
+  "abort"
+  "break"
+] @keyword
 
+; Operators
 [
   "="
+  "|="
   "=="
   "!="
-  "|="
   ">"
   ">="
   "<"
@@ -83,28 +84,16 @@
   "??"
   "|"
   "!"
+  "->"
 ] @operator
 
-[
-  "->"
-  ":"
-  ";"
-  ","
-] @punctuation.delimiter
+; Punctuation
+[":" ";" ","] @punctuation.delimiter
 
 [
-  "("
-  ")"
-  "["
-  "]"
-  "{"
-  "}"
+  "(" ")"
+  "[" "]"
+  "{" "}"
 ] @punctuation.bracket
 
-(closure_variables
-  "|" @punctuation.bracket)
-
-(function_call
-  (ident) @keyword.exception
-  "!"
-  (#any-of? @keyword.exception "assert" "assert_eq"))
+(closure_variables "|" @punctuation.bracket)
