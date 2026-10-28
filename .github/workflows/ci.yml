@@ -7,15 +7,27 @@ on:
       - grammar.js
       - src/**
       - test/**
+      - queries/**
       - bindings/**
       - binding.gyp
+      - tree-sitter.json
+      - package.json
+      - Cargo.toml
+      - pyproject.toml
+      - .github/workflows/ci.yml
   pull_request:
     paths:
       - grammar.js
       - src/**
       - test/**
+      - queries/**
       - bindings/**
       - binding.gyp
+      - tree-sitter.json
+      - package.json
+      - Cargo.toml
+      - pyproject.toml
+      - .github/workflows/ci.yml
 
 concurrency:
   group: ${{github.workflow}}-${{github.ref}}
@@ -37,4 +49,4 @@ jobs:
       # Ensure the generated parser is up to date
       - run: tree-sitter generate
       - name: Run tests
-        uses: tree-sitter/parser-test-action@v2
+        uses: tree-sitter/parser-test-action@v3
