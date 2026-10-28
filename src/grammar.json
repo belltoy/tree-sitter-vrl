@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "vrl",
   "word": "ident",
   "rules": {
@@ -2508,5 +2509,6 @@
   "inline": [],
   "supertypes": [
     "_literal"
-  ]
+  ],
+  "reserved": {}
 }
