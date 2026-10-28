@@ -4,12 +4,28 @@ Timestamp Literals
 
 t'2021-02-02T19:41:00Z'
 
-# Should be error
-t'hello'
+t'2021-02-11T10:32:50.553-04:00'
+
+t'2021-02-11 10:32:50+08:00'
+
+t'2021-02-11T10:32:50+0800'
+
+t'2021-02-11T10:32:50UTC'
 
 --------------------------
 
 (program
   (timestamp)
-  (comment)
+  (timestamp)
+  (timestamp)
+  (timestamp)
   (timestamp))
+
+==========================
+Invalid Timestamp Literals
+:error
+==========================
+
+t'hello'
+
+--------------------------

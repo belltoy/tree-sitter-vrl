@@ -2409,56 +2409,36 @@
       "value": "null"
     },
     "timestamp": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "t'"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_timestamp_content"
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "t'"
+          },
+          {
+            "type": "PATTERN",
+            "value": "\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[Tt ]"
+          },
+          {
+            "type": "PATTERN",
+            "value": "([01]\\d|2[0-3]):[0-5]\\d:([0-5]\\d|60)(\\.\\d+)?"
+          },
+          {
+            "type": "PATTERN",
+            "value": "([Zz]|[Uu][Tt][Cc]|[+-]([01]\\d|2[0-3]):?[0-5]\\d)"
+          },
+          {
+            "type": "STRING",
+            "value": "'"
           }
-        },
-        {
-          "type": "STRING",
-          "value": "'"
-        }
-      ]
-    },
-    "_timestamp_content": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "IMMEDIATE_TOKEN",
-          "content": {
-            "type": "PREC",
-            "value": 1,
-            "content": {
-              "type": "PATTERN",
-              "value": "[^\\\\'\\n]+"
-            }
-          }
-        },
-        {
-          "type": "IMMEDIATE_TOKEN",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": "\\"
-              },
-              {
-                "type": "PATTERN",
-                "value": "('|\\\\)"
-              }
-            ]
-          }
-        }
-      ]
+        ]
+      }
     },
     "ident": {
       "type": "TOKEN",

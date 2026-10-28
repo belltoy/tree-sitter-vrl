@@ -94,6 +94,22 @@ code in YAML:
 
 You can do the same for TOML files.
 
+## Timestamp literals
+
+`t'...'` literals are only recognized when the content is an RFC 3339 timestamp, in the same
+relaxed form that VRL's compiler accepts (chrono's `DateTime<Utc>` parsing). Anything else is a
+syntax error. The accepted form is:
+
+- date `YYYY-MM-DD` (month and day are range checked)
+- separator `T`, `t` or a space
+- time `HH:MM:SS`, with optional fractional seconds (`.123`)
+- a mandatory time zone: `Z`, `UTC`, `±HH:MM` or `±HHMM`
+
+For example `t'2021-02-11T10:32:50.553-04:00'` and `t'2021-02-11 10:32:50+0800'`.
+
+Not checked: whether the date exists (`2021-02-30` passes), and chrono's extras (unpadded numbers
+such as `2021-2-2`, spaces between components), which are rejected here.
+
 ## Known Issues
 
 The vector configuration file supports environment variable [interpolation]. This feature is not a
@@ -106,7 +122,7 @@ techniques.
 ## TODO
 
 - [x] Add unit tests
-- [ ] Detect RFC3339 format for `timestamp` type
+- [x] Detect RFC3339 format for `timestamp` type
 
 ## References
 

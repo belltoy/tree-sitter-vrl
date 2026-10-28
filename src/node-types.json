@@ -1244,11 +1244,6 @@
     }
   },
   {
-    "type": "timestamp",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "unary_expression",
     "named": true,
     "fields": {
@@ -1537,8 +1532,8 @@
     "named": false
   },
   {
-    "type": "t'",
-    "named": false
+    "type": "timestamp",
+    "named": true
   },
   {
     "type": "true",

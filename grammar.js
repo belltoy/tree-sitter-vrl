@@ -487,19 +487,17 @@ module.exports = grammar({
 
     null: $ => 'null',
 
-    timestamp: $ => seq(
+    // Relaxed RFC 3339 as accepted by chrono (which VRL's compiler uses), e.g.
+    // t'2021-02-11T10:32:50.553-04:00'. Anything else is a parse error.
+    // shortcut: no unpadded numbers or inner spaces, nobody writes those; widen if needed.
+    timestamp: _ => token(seq(
       't\'',
-      repeat($._timestamp_content),
+      /\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/,
+      /[Tt ]/,
+      /([01]\d|2[0-3]):[0-5]\d:([0-5]\d|60)(\.\d+)?/,
+      /([Zz]|[Uu][Tt][Cc]|[+-]([01]\d|2[0-3]):?[0-5]\d)/,
       '\'',
-    ),
-
-    _timestamp_content: $ => choice(
-      token.immediate(prec(1, /[^\\'\n]+/)),
-      token.immediate(seq(
-        '\\',
-        /('|\\)/,
-      )),
-    ),
+    )),
 
     ident: _ => token(/[_a-zA-Z0-9][a-zA-Z0-9_]*/),
 
