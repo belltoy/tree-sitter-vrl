@@ -25,7 +25,7 @@ authors = [
 Homepage = "https://github.com/belltoy/tree-sitter-vrl"
 
 [project.optional-dependencies]
-core = ["tree-sitter~=0.21"]
+core = ["tree-sitter~=0.25"]
 
 [tool.cibuildwheel]
 build = "cp38-*"

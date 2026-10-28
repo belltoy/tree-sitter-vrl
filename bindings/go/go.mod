@@ -2,4 +2,6 @@ module github.com/belltoy/tree-sitter-vrl
 
 go 1.22
 
-require github.com/smacker/go-tree-sitter v0.0.0-20230720070738-0d0a9f78d8f8
+require github.com/tree-sitter/go-tree-sitter v0.24.0
+
+require github.com/mattn/go-pointer v0.0.1 // indirect

@@ -3,7 +3,7 @@ package tree_sitter_vrl_test
 import (
 	"testing"
 
-	tree_sitter "github.com/smacker/go-tree-sitter"
+	tree_sitter "github.com/tree-sitter/go-tree-sitter"
 	"github.com/belltoy/tree-sitter-vrl"
 )
 
